@@ -1,2 +1,7 @@
 safe: true
 permalink: /posts/:year/:month/:day/:title
+title: "Блог Конфуция"
+url: "http://kung-fu-tzu.ru"
+author:
+    name: Петр Леонов
+    email: comments@kung-fu-tzu.ru
