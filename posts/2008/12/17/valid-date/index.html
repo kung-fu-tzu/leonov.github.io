@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Правильная дата — Блог Конфуция</title>
+	<!--# include virtual="/inc/common-head.html" -->
+</head>
+<body>
+<!--# include virtual="/inc/common-top.html" -->
+<div class="main-wrapper">
+
+<a href="/" class="blog-name">Блог Конфуция</a>
+
+<div class="post">
+	<section>
+		<h class="title">Правильная дата</h>
+		<span class="date">17.12.2008</span>
+		<section class="content">
+		<p>Создавая дату с помощью <code>new Date(…)</code>, мы всегда получим новый объект даты. Если проверить его на истинность, результатом будет <code>true</code>. А как тогда проверить, не ошиблись ли мы, и верна ли дата?</p>
+
+<p>
+Есть множество способов. Мне понравился этот: <code>!isNaN(+date)</code>. Конструкция работает очень просто: приводит дату к числу унарным плюсом и проверяет число на равенство <code>NaN</code>. Для удобства этот код можно завернуть в метод самой даты:
+<pre><code class="javascript">
+Date.prototype.isValid = function ()
+{
+    return !isNaN(+this)
+}
+</code></pre>
+Есть только одна проблема. Получить невалидную дату в опере (9.2, 9.6) крайне сложно. Для этого необходимо дать на вход просто совершеннейший бред, иначе опера будет усердно угадывать дату даже там, где ее нет. Например, <code>new Date('1 2 3')</code> вернет дату «Mon, 01 Dec 2008 04:57:00 GMT+0300». Как? — не понятно.
+</p>
+
+<p>
+Чаще всего в реальной жизни не бывает валидных дат, которые превращаются в <code>0</code> (то есть 1 января 1970 в 0 часов и 0 минут: <code>new Date(0)</code>). Поэтому можно обойтись простой проверкой:
+<pre><code class="javascript">
+alert(+date ? 'валидна' : 'невалидна')
+</code></pre>
+Однако, в сафари <code>NaN</code> почему-то есть истина, и в нем без <code>isNaN</code> не обойтись. Спасибо вам, если вы учитываете особенности сафарьки при разработке сайтов ;)
+</p>
+<p><strong>UPD</strong>: Ура! В четвертом сафари <code>NaN</code> стал чушью! Опс, то есть стал ложью ;)</p>
+		</section>
+	</section>
+	
+	<dl class="tags">
+		<dt class="head">Теги:</dt>
+		<dd class="body">
+			<ul class="list"><li class="tag">клиент</li><li class="tag">Date</li><li class="tag">javascript</li><li class="tag">opera</li></ul>
+		</dd>
+	</dl>
+	
+	<div class="comments">Очень жду ваших комментариев <a href="mailto:Комментарии блога Конфуция <comments@kung-fu-tzu.ru>?subject=Re: Правильная дата">на почту</a>.</div>
+</div>
+
+</div>
+<!--# include virtual="/inc/common-bottom.html" -->
+</body>
+</html>

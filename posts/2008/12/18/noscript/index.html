@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>noscript — Блог Конфуция</title>
+	<!--# include virtual="/inc/common-head.html" -->
+</head>
+<body>
+<!--# include virtual="/inc/common-top.html" -->
+<div class="main-wrapper">
+
+<a href="/" class="blog-name">Блог Конфуция</a>
+
+<div class="post">
+	<section>
+		<h class="title">noscript</h>
+		<span class="date">18.12.2008</span>
+		<section class="content">
+		<p>
+Прикольно написать посетителю, что у него отрублен яваскрипт. Особенно, если без яваскрипта все сразу рушится. Но еще прикольнее отправить несчастного на специальную красивенькую страничку. Там можно написать всяческие извинения, мол, прости, нам без яваскрипта никак. Или наоборот — угрозы, типа, влючай яваксрипт, мы тебя запомнили!
+</p>
+
+<p>
+Сделать это проще простого. Создайте отвечающую вашему стилю ведения бизнеса страничку, а в <code>&lt;head&gt;</code> остальных страниц добавьте <code>&lt;noscript&gt;</code> с <code>&lt;meta&gt;</code> внутри. Примерно вот так:
+<pre><code class="html">
+&lt;head&gt;
+    &lt;noscript&gt;&lt;meta http-equiv="refresh" content="0;url=/noscript.html"/&gt;&lt;/noscript&gt;
+&lt;/head&gt;
+</code></pre>
+</p>
+		</section>
+	</section>
+	
+	<dl class="tags">
+		<dt class="head">Теги:</dt>
+		<dd class="body">
+			<ul class="list"><li class="tag">клиент</li><li class="tag">javascript</li><li class="tag">noscript</li><li class="tag">oops</li></ul>
+		</dd>
+	</dl>
+	
+	<div class="comments">Очень жду ваших комментариев <a href="mailto:Комментарии блога Конфуция <comments@kung-fu-tzu.ru>?subject=Re: noscript">на почту</a>.</div>
+</div>
+
+</div>
+<!--# include virtual="/inc/common-bottom.html" -->
+</body>
+</html>

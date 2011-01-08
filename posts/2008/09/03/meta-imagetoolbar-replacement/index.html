@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Замена meta imagetoolbar — Блог Конфуция</title>
+	<!--# include virtual="/inc/common-head.html" -->
+</head>
+<body>
+<!--# include virtual="/inc/common-top.html" -->
+<div class="main-wrapper">
+
+<a href="/" class="blog-name">Блог Конфуция</a>
+
+<div class="post">
+	<section>
+		<h class="title">Замена meta imagetoolbar</h>
+		<span class="date">03.09.2008</span>
+		<section class="content">
+		<p>Не хотите ставить <code>meta http-equiv="imagetoolbar" content="no"</code> на всех страницах? Не срабатывает <code>set_header</code>? Тогда поможет экспрешн.</p>
+
+<p><pre><code>
+img
+{
+  scrollbar-highlight-color: expression
+  (
+    (runtimeStyle.scrollbarHighlightColor = "transparent"),
+    (this.galleryImg='no')
+  )
+}
+
+</code></pre></p>
+
+<p>Ключевой момент — это <code>this.galleryImg='no'</code>. По строкам я разбил для красоты, перед использованием их надо объединить в одну.</p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/ms533774(VS.85).aspx">MSDN про galleryImg</a></p>
+
+
+		</section>
+	</section>
+	
+	<dl class="tags">
+		<dt class="head">Теги:</dt>
+		<dd class="body">
+			<ul class="list"><li class="tag">клиент</li><li class="tag">css</li><li class="tag">expressions</li><li class="tag">IE</li></ul>
+		</dd>
+	</dl>
+	
+	<div class="comments">Очень жду ваших комментариев <a href="mailto:Комментарии блога Конфуция <comments@kung-fu-tzu.ru>?subject=Re: Замена meta imagetoolbar">на почту</a>.</div>
+</div>
+
+</div>
+<!--# include virtual="/inc/common-bottom.html" -->
+</body>
+</html>

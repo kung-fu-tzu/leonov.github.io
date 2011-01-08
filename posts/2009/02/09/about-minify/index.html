@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>О минифае — Блог Конфуция</title>
+	<!--# include virtual="/inc/common-head.html" -->
+</head>
+<body>
+<!--# include virtual="/inc/common-top.html" -->
+<div class="main-wrapper">
+
+<a href="/" class="blog-name">Блог Конфуция</a>
+
+<div class="post">
+	<section>
+		<h class="title">О минифае</h>
+		<span class="date">09.02.2009</span>
+		<section class="content">
+		<p>Предварительное сжатие яваскрипта хорошо по двум причинам: во-первых, файл теряет в весе, а во-вторых, пожатый файл проще парсить и исполнять яваскриптовому движку. Конечно, если минифаить «неэффективный» код, то пожмется он незначительно, да и парсить его остается так же сложно.</p>
+
+<p>Чтобы избежать всех этих неэффективностей, можно выработать такой стиль программирования, при котором код и жмется хорошо, и исполняется быстро ;)</p>
+
+<p>
+Можно начать с кеширования значений, которые часто используются в функции, но их получение из внешнего мира затратно. Здесь налицо выгода при сжатии: минифаер поймет, что переменная локальная и сожмет ее имя в один символ. Интерпретатор при исполнении такого кода  будет точно знать, что используется локальная копия далекого объекта. А локальная копия гораздо быстрее ветвистых поисков в объектах и массивах. Например,
+<pre><code class="javascript">
+var name = this.conf.name, defs = this.defs
+this.save(defs[name] || (defs[name] = {}))
+</code></pre>
+немного лучше чем
+<pre><code class="javascript">
+this.save(this.defs[this.conf.name] || (this.defs[this.conf.name] = {}))
+</code></pre>
+Первое пожмется в
+<pre><code class="javascript">
+var n=this.conf.name,d=this.defs;this.save(d[n]||(d[n]={}))
+</code></pre>
+а второе в
+<pre><code class="javascript">
+this.save(this.defs[this.conf.name]||(this.defs[this.conf.name]={}))
+</code></pre>
+то есть не пожмется вообще. Можно еще <code>this</code> закешировать, и будет еще на два байта меньше:
+<pre><code class="javascript">
+var t=this,n=t.conf.name,d=t.defs;t.save(d[n]||(d[n]={}))
+</code></pre>
+но это мы предоставим гзипу — он автоматический :)
+</p>
+
+<p>
+Кеширование переменных гораздо лучше копипаста, встречающегося на вольных просторах интернета. Типа этого:
+<pre><code class="javascript">
+this.conf.name.first = "Vasya"
+this.conf.name.second = "Poupkine"
+</code></pre>
+преобразуется в
+<pre><code class="javascript">
+var name = this.conf.name
+name.first = "Vasya"
+name.second = "Poupkine"
+</code></pre>
+и, соответственно, сжимается в
+<pre><code class="javascript">
+var n=this.conf.name;n.first="Vasya";n.second="Poupkine"
+</code></pre>
+</p>
+
+<p>
+Подобные оптимизации совсем не обязательны и могут отвлекать от процесса творческого программирования. Но если привыкнуть к ним и начать думать как оптимизатор кода (в яваскрипте же его нет), то писать такой код можно уже без напряжения. Если ваш код будет использоваться часто и интенсивно, но изменен будет нескоро, то такая оптимизация как раз для вас. Можно, конечно, подождать многопроходного компилятора с оптимизатором и кроссбраузерного байткода, да когда они еще будут-то…
+</p>
+		</section>
+	</section>
+	
+	<dl class="tags">
+		<dt class="head">Теги:</dt>
+		<dd class="body">
+			<ul class="list"><li class="tag">клиент</li><li class="tag">javascript</li><li class="tag">minify</li></ul>
+		</dd>
+	</dl>
+	
+	<div class="comments">Очень жду ваших комментариев <a href="mailto:Комментарии блога Конфуция <comments@kung-fu-tzu.ru>?subject=Re: О минифае">на почту</a>.</div>
+</div>
+
+</div>
+<!--# include virtual="/inc/common-bottom.html" -->
+</body>
+</html>

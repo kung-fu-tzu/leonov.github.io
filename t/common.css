@@ -1,0 +1,68 @@
+body, table,
+section, h, p, form,
+fieldset, legend,
+ol, ul, li, dl, dt, dd { margin: 0; padding: 0; border: 0; font-weight: normal; list-style: none; }
+table { border: 0; border-collapse: collapse; }
+table td { padding: 0; font-size: 1em; vertical-align: top; }
+img { vertical-align: middle; }
+a { cursor: pointer; text-decoration: none; color: #382; }
+a:hover { text-decoration: underline; }
+a img { border: 0; }
+html, input, select, textarea, button { font-family: Tahoma, Arial, sans-serif; }
+section, h { display: block; }
+
+html { background: #eee; font-size: 16px; }
+
+code { font-family: 'Lucida Console', 'courier new', monospace; line-height: 1em; }
+
+.main-wrapper { max-width: 610px; margin: 25px auto; padding: 25px; border: 1px solid #aaa; -webkit-border-radius: 20px; -moz-border-radius: 20px; background: #fff; }
+
+.blog-name { display: block; text-align: center; padding: 15px; margin: -10px; margin-bottom: 15px; font-size: 20px; color: #fff; background: #5a2; border: 1px solid #680; -webkit-border-radius: 10px; -moz-border-radius: 10px; }
+.blog-name:hover { text-decoration: none; }
+
+.posts-list .item { margin: 0 0 1em 0; }
+.posts-list .item:last-child { margin-bottom: 0; }
+.posts-list .post-preview { display: block; text-decoration: none; }
+.posts-list .post-preview .title { display: block; }
+.posts-list .post-preview .description,
+.posts-list .post-preview .date { font-size: 12px; }
+.posts-list .post-preview .description { color: #555; margin-left: 0em; }
+.posts-list .post-preview .date { color: #aaa; display: block; }
+/*.posts-list .post-preview .description { display: none; }*/
+.posts-list .item:hover .post-preview .title { text-decoration: underline; }
+/*.posts-list .item:hover .post-preview .description { display: inline; }*/
+/*.posts-list .post-preview .date { display: none; }*/
+
+.post .date { display: block; color: #ccc; margin: 0 0 0.5em 0; }
+.post section { overflow: hidden; margin: 0 0 0 0; }
+.post section h { font-size: 26px; }
+.post section section h { font-size: 22px; }
+.post section section section h { font-size: 20px; }
+.post section section section section h { font-size: 18px; }
+.post section img.aside { float: left; margin: 0 15px 15px 0; }
+.post { font-family: Times New Roman, serif; }
+.post h { margin: 0.5em 0 0.2em 0; }
+.post h a { color: inherit; cursor: default; }
+.post h a:hover { text-decoration: none; }
+/*.post h a:hover:after { content: ' (anhor)'; opacity: 0.3; }*/
+.post p, .post dl, .post ol, .post ul { margin: 0.25em 0 1em 0; }
+.post ol, .post ul { margin-left: 2em; }
+.post ol li { list-style: decimal; }
+.post ul li { list-style: disc; }
+
+.post .tags { font-size: 0.8em; margin: 1em 0; }
+.post .tags .list { color: #888; }
+.post .tags .head,
+.post .tags .body,
+.post .tags .list,
+.post .tags .tag { display: inline; margin: 0; }
+.post .tags .tag { margin-right: 0.1em; }
+.post .tags .tag:after { content: ', '; }
+.post .tags .tag:last-child:after { content: '.'; }
+
+.post .comments { margin: 1em 0; }
+
+<!--# include virtual="sunburst.css" -->
+
+pre { white-space: pre-wrap; padding: 0 1em 1em; margin: 0.5em 0; -moz-border-radius: 15px; -webkit-border-radius: 15px; }
+pre code { font-size: 12px; }

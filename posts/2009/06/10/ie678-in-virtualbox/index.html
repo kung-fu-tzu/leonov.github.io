@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>IE в VirtualBox — Блог Конфуция</title>
+	<!--# include virtual="/inc/common-head.html" -->
+</head>
+<body>
+<!--# include virtual="/inc/common-top.html" -->
+<div class="main-wrapper">
+
+<a href="/" class="blog-name">Блог Конфуция</a>
+
+<div class="post">
+	<section>
+		<h class="title">IE в VirtualBox</h>
+		<span class="date">10.06.2009</span>
+		<section class="content">
+		<p>Для тестирования сайтов в ИЕ использую <a href="http://www.virtualbox.org/">VirtualBox</a>. На новых маках виртуалбокс просто летает (<strong>UPD</strong>: на самых старых интеловских — тоже) и всего за три секунды восстанавливает и сохраняет состояние машины. То есть эксплорер стал просто еще одиним браузером для мака, в котором можно тестить все без тормозов.</p>
+
+<p>Были, правда, две маленькие неприятности: все виртуальные машины надо было запускать из специального окошка, и их иконки мало чем отличались друг от друга по виду. Яблоко-табом переключаться было неудобно: постоянно попадаешь не на ту машину, или — совсем мимо — в список машин. Кроме неудобств, такой метод плох еще и с эстетической стороны, так как в доке не было видно всех браузеров, в которых надо тестить перед пушем. И вообще.</p>
+
+<p>Решить сразу все две с половиной проблемы удалось простым трюком. Достаточно создать фейковые приложения, которые вызывают виртуалбокс с нужными параметрами командной строки. Да, и иконочки им приделать красивые.</p>
+
+<p>Вот что получилось:
+<img src="http://www.cmsbuilder.ru/blog/wp-content/uploads/2009/06/ies.png" alt="ies" title="ies" width="528" height="123" class="alignnone size-full wp-image-410" />.</p>
+
+<p>Да, после серьезных изменений в верстке, всегда прогоняю эти 12 браузеров (Safari 4, Chromium 3, Firefox 2, 3, 3.5, IE 6, 7, 8-8, 8-7, Opera 9.2, 9.5, 9.6, 10).  А если будут силы, то еще и в виндовых версиях хороших браузеров.</p>
+
+<p>Вот мой набор приложений с иконками: <a href='http://www.cmsbuilder.ru/blog/wp-content/uploads/2009/06/virtualbox-ie678-apps.zip'>virtualbox-ie678-apps.zip</a>. Чтобы эти аппы запускали ваши виртуальные машины, необходимо в файликах <code>Contents/MacOS/VirtualBoxVM</code> (простые bash-скрипты) заменить все UUID на ваши. Эти уиды можно посмотреть через <code>VBoxManage list vms</code> или с помощью команды <code>ps -A | grep startvm</code>, предварительно запустив интересующие машины.</p>
+
+		</section>
+	</section>
+	
+	<dl class="tags">
+		<dt class="head">Теги:</dt>
+		<dd class="body">
+			<ul class="list"><li class="tag">клиент</li><li class="tag">dock</li><li class="tag">icon</li><li class="tag">IE</li><li class="tag">virtualbox</li></ul>
+		</dd>
+	</dl>
+	
+	<div class="comments">Очень жду ваших комментариев <a href="mailto:Комментарии блога Конфуция <comments@kung-fu-tzu.ru>?subject=Re: IE в VirtualBox">на почту</a>.</div>
+</div>
+
+</div>
+<!--# include virtual="/inc/common-bottom.html" -->
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Статистика от Google Analytics для amCharts через XSLT — Блог Конфуция</title>
+	<!--# include virtual="/inc/common-head.html" -->
+</head>
+<body>
+<!--# include virtual="/inc/common-top.html" -->
+<div class="main-wrapper">
+
+<a href="/" class="blog-name">Блог Конфуция</a>
+
+<div class="post">
+	<section>
+		<h class="title">Статистика от Google Analytics для amCharts через XSLT</h>
+		<span class="date">26.10.2009</span>
+		<section class="content">
+		<p>Сделал новую <a href="http://www.inshaker.ru/about.html">статистику посещаемости</a> для <a href="http://www.inshaker.ru/">Иншейкера</a>. Рисуется она, как и <a href="http://vaskas.ru/2008/08/08/displaying-google-analytics-charts-on-the-website/">прежняя</a>, с помощью <a href="http://www.amcharts.com/">amCharts</a>. Но теперь все действия по выкачиванию и преобразовыванию данных выполняются простым bash-скриптом и стандартной утилитой <a href="http://xmlsoft.org/XSLT/xsltproc2.html">xsltproc</a>. Думаю, <code>bash</code> и <code>xsltproc</code> есть у всех.</p>
+
+<p>Дело делают всего два скрипта: <code>login.sh</code> и <code>update.sh</code>. Первый логинится в гугл, используя мыло и пароль из переменных окружения (нечего им в коде делать). Гугл в ответ отдает авторизационный токен, который, согласно документации, можно использовать около двух недель. Второй скрипт выкачивает статистику в формате <a href="http://en.wikipedia.org/wiki/Atom_(standard)">Atom</a>, расширенном гуглом. На этом программирование на баше заканчивается, и начинается XSLT.</p>
+
+<p>Скрипты со стилями положил на гитхаб в <a href="http://github.com/kung-fu-tzu/analytics-xslt">analytics-xslt</a>.</p>
+
+<p><strong>UPD</strong>: разошелся и сделал нам <a href="http://www.inshaker.ru/geeks/stats.html">статистику по браузерам</a>.</p>
+		</section>
+	</section>
+	
+	<dl class="tags">
+		<dt class="head">Теги:</dt>
+		<dd class="body">
+			<ul class="list"><li class="tag">сервер</li><li class="tag">analytics</li><li class="tag">charts</li><li class="tag">google</li><li class="tag">inshaker</li><li class="tag">xslt</li></ul>
+		</dd>
+	</dl>
+	
+	<div class="comments">Очень жду ваших комментариев <a href="mailto:Комментарии блога Конфуция <comments@kung-fu-tzu.ru>?subject=Re: Статистика от Google Analytics для amCharts через XSLT">на почту</a>.</div>
+</div>
+
+</div>
+<!--# include virtual="/inc/common-bottom.html" -->
+</body>
+</html>

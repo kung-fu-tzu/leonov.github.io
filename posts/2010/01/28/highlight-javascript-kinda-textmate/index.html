@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Раскрашиваем яваскрипт — Блог Конфуция</title>
+	<!--# include virtual="/inc/common-head.html" -->
+</head>
+<body>
+<!--# include virtual="/inc/common-top.html" -->
+<div class="main-wrapper">
+
+<a href="/" class="blog-name">Блог Конфуция</a>
+
+<div class="post">
+	<section>
+		<h class="title">Раскрашиваем яваскрипт</h>
+		<span class="date">28.01.2010</span>
+		<section class="content">
+		<p>Осилил, наконец, полноценную раскраску для яваскрипта. В <a href="http://softwaremaniacs.org/soft/highlight/">хайлайтере</a> уже была <a href="http://softwaremaniacs.org/blog/2007/01/20/highlight-js-javascript/">поддержка яваскрипта</a>, но простенькая. А мне хотелось, чтобы все было так же, как в текстмейте, да еще с такими же точно цветами. И вот, на основе стиля sunburst с парочкой добавлений, и с полностью переделанными правилами раскраски получилась это:</p>
+
+<p><img src="i/example.png"/></p>
+
+<p>А вот тестовая страничка с кучей <a href="/pages/highlight-js-tm.html">хитрого яваскрипта</a>, откуда и была сфоткана картиночка выше.</p>
+
+<p>Для того, чтобы надежно распарсить регулярки (они <a href="/pages/highlight-js-tm.html#regexps">внизу тестовой странички</a>), которые очень похожи на оператор деления и на комментарии («<a href="http://softwaremaniacs.org/blog/2008/11/24/highlightjs-50-beta/">Регэкспы и деления</a>»), пришлось чуть-чуть пропатчить хайлайтер. Надеюсь, Иван скоро примет <a href="i/highlight-javascript-like-textmate.patch">патч</a>, или придумает красивый способ объяснить парсеру нужные яваскрипту тонкости.</p>
+
+<p>Если вам тоже хочется такую раскраску, милости прошу: модуль с правилами <a href="i/javascript-tm.js">javascript-tm.js</a> и пропатченный <a href="i/highlight.js">highlight.js</a>.</p>
+		</section>
+	</section>
+	
+	<dl class="tags">
+		<dt class="head">Теги:</dt>
+		<dd class="body">
+			<ul class="list"><li class="tag">клиент</li><li class="tag">javascript</li><li class="tag">highlight</li></ul>
+		</dd>
+	</dl>
+	
+	<div class="comments">Очень жду ваших комментариев <a href="mailto:Комментарии блога Конфуция <comments@kung-fu-tzu.ru>?subject=Re: Раскрашиваем яваскрипт">на почту</a>.</div>
+</div>
+
+</div>
+<!--# include virtual="/inc/common-bottom.html" -->
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>nginx.js — Блог Конфуция</title>
+	<!--# include virtual="/inc/common-head.html" -->
+</head>
+<body>
+<!--# include virtual="/inc/common-top.html" -->
+<div class="main-wrapper">
+
+<a href="/" class="blog-name">Блог Конфуция</a>
+
+<div class="post">
+	<section>
+		<h class="title">nginx.js</h>
+		<span class="date">30.11.2008</span>
+		<section class="content">
+		<p>На <a href="http://www.inshaker.ru/">работе</a> мы используем по большому счету только javascript и nginx (еще немножко ruby, но об этом в следующий раз). И мне всегда хотелось посмотреть, как они устроены внутри. Но достойной задачи не находилось, и пришлось ее придумывать. Что может быть лучше в данном случае, чем написать модуль для нжинкса по встраиванию яваскрипта? И правда, оказалось очень интересно. Сразу скажу, что практического применения связке nginx+js найти пока не удалось.</p>
+
+<h3>nginx</h3>
+<p>Стабильной версией нжинкса на данный момент является <a href="http://sysoev.ru/nginx/nginx-0.6.34.tar.gz">0.6.34</a>. В качестве мануала был выбран другой модуль: <a href="http://sysoev.ru/nginx/docs/http/ngx_http_perl_module.html">ngx_http_perl_module</a>. Встроить перл у меня однажды получилось — правда, с трудом — и этот модуль показался самым лучшим примером. Никакое другое руководство мне бы не помогло так, как помог исходник перлового модуля. Вот она сила опенсорса! Чуть позже встретилось «<a href="http://emiller.info/nginx-modules-guide.html">Руководство Эмиллера по разработке модулей для Nginx</a>». Это руководство мне очень понравилось. Оно дает общее представление о нжинксе и его механизмах. Я даже <a href="http://www.cmsbuilder.ru/blog/emillers-nginx-modules-guide/">перевел половину</a> на русский.</p>
+
+<h3>javascript</h3>
+<p>В качестве представителя яваскрипта был выбран <a href="https://developer.mozilla.org/en/SpiderMonkey">SpiderMonkey</a>. Потому, что мне нравится файрфокс, и у них еще на <a href="http://www.mozilla.org/rhino/">рино</a> сил хватает. Сначала почитал <a href="https://developer.mozilla.org/en/SpiderMonkey_Build_Documentation">как его компилить</a>, потом <a href="https://developer.mozilla.org/En/SpiderMonkey/JSAPI_User_Guide">как его встраивать</a>, а затем погрузился <a href="https://developer.mozilla.org/en/SpiderMonkey/JSAPI_Reference">в апи</a>. Механизмы в этих текстах изложены вполне доступно, так что страх перед неизведанным быстро пропал. Встраивался именно <a href="http://ftp.mozilla.org/pub/mozilla.org/js/js-1.7.0.tar.gz">SpiderMonkey 1.7.0</a>. Мозила готовит ему на смену <a href="https://wiki.mozilla.org/JavaScript:TraceMonkey">TraceMonkey</a> и обещает, что сохранит обратную совместимость. Верю им: Firefox 3.1 уже вовсю использует TraceMonkey, значит и нжинкс сможет. А это уже JIT.</p>
+
+<h3>nginx+javascript</h3>
+<p>Так как SpiderMonkey не несет с собой библиотеки модулей (как перл, руби или питон), все придется писать с нуля. Это тоже очень интересно. Так же есть возможность прикрутить поделки немногочисленных отважных джедаев. В случае нашего модуля  научить яваскрипт удалось немногому: выводить сообщения в лог и отвечать на простые GET запросы. Никаких инструментов для парсинга простых POST-запросов или, тем более, мультипартов на яваскрипте мной не написано. Даже файл открыть нельзя. Не удивляйтесь, это концепт, и нужен он пока только мне одному.</p>
+
+<h3>nginx.js</h3>
+<p>Итак, что мы умеем. Вот пример функции, которая отвечает на HTTP-запрос:
+<pre><code class="javascript">
+function processRequest (r)
+{
+    r.sendHttpHeader('text/html; charset=utf-8')
+    r.printString("Привет, Девелопер!\n")
+    r.printString("Ты вызвал страницу " + r.uri
+        + ', методом ' + r.method + ', с IP ' + r.remoteAddr)
+    return Nginx.HTTP_OK
+}
+</code></pre>
+<dl>
+<dt>Небольшое пояснение:</dt>
+<dd><code>r</code> — это объект запроса, созданный внутри нжинкса;</dd>
+<dd><code>r.sendHttpHeader(ctype)</code> — это метод отправляет заголовки клиенту, попутно устанавливая <code>Content-type</code> в значение <code>ctype</code>;</dd>
+<dd><code>r.printString(str)</code> — метод копирует значение строки <code>str</code> в очередь на отправку;</dd>
+<dd><code>r.uri</code>, <code>r.method</code> и <code>r.remoteAddr</code> — геттеры для соответствующих полей запроса;</dd>
+<dd><code>Nginx.NGX_HTTP_OK</code> — константа равная <code>200</code>.</dd>
+</dl>
+</p>
+
+
+<p>А вот отрывок файла конфигурации, который загружает <code>nginx.js</code> и устанавливает хендлер <code>processRequest()</code>:
+<pre><code class="nginx">
+http
+{
+    js_require 'nginx.js';
+    # ...
+    server
+    {
+        # ...
+        location /test
+        {
+            js processRequest;
+        }
+    }
+}
+</code></pre>
+В общем, все скопировано с <code>ngx_http_perl_module</code>.
+</p>
+
+<h3>Итог</h3>
+<p>Скоро должна накопиться критическая масса желающих использовать javascript как язык общего назначения. Они принесут с собой новые полезные модули, портируют уже существующие модули для похожих языков (например, модули для руби). И все станет еще интереснее. Но уже сейчас легкий и быстрый скриптовый язык внутри нашего любимого нжинкса выглядит интересно. Посмотрим что еще из этого получится.</p>
+
+<h3>Смотрите в следующих сериях</h3>
+<p>В ближайшем будущем постараюсь оформить этот модуль как <a href="/posts/2008/12/07/ngx_http_js_module-01/">настоящий модуль</a>, а не как патч ко всему дереву исходников. Затем опишу наиболее интересные места спайки конструкций <code>NGX_*</code> и <code>JavaScript.*</code>. Возможно, научу-таки яваскрипт открывать файлы (<a href="/posts/2008/12/07/ngx_http_js_module-01/#SpiderMonkeyFile">научил</a>, а потом разучил).</p>
+		</section>
+	</section>
+	
+	<dl class="tags">
+		<dt class="head">Теги:</dt>
+		<dd class="body">
+			<ul class="list"><li class="tag">сервер</li><li class="tag">javascript</li><li class="tag">nginx</li><li class="tag">ngx_http_javascript_module</li><li class="tag">ngx_http_js_module</li><li class="tag">serverside javascript</li><li class="tag">spidermonkey</li></ul>
+		</dd>
+	</dl>
+	
+	<div class="comments">Очень жду ваших комментариев <a href="mailto:Комментарии блога Конфуция <comments@kung-fu-tzu.ru>?subject=Re: nginx.js">на почту</a>.</div>
+</div>
+
+</div>
+<!--# include virtual="/inc/common-bottom.html" -->
+</body>
+</html>

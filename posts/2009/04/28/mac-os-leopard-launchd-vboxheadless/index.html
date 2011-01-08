@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Mac OS Leopard + launchd + VBoxHeadless — Блог Конфуция</title>
+	<!--# include virtual="/inc/common-head.html" -->
+</head>
+<body>
+<!--# include virtual="/inc/common-top.html" -->
+<div class="main-wrapper">
+
+<a href="/" class="blog-name">Блог Конфуция</a>
+
+<div class="post">
+	<section>
+		<h class="title">Mac OS Leopard + launchd + VBoxHeadless</h>
+		<span class="date">28.04.2009</span>
+		<section class="content">
+		<p>Вот и мы решились, наконец, поиграть в виртуализацию. Поставили <a href="http://www.ubuntu.com/getubuntu/downloadmirrors#bt">Ubuntu</a> в <a href="http://www.virtualbox.org/">VirtualBox</a> на леопарде, а в убунте настроили <a href="http://www.openvz.org/">OpenVZ</a>. Все это крутится на мак мини с 4-мя гигами оперативы. Мак тут, конечно, не особо нужен, но покупать здоровенный сервак или проводастый писюк совсем не хотелось.</p>
+
+<p>Все это добро (Mac mini MB463LL/A, Ubuntu 8.04, VirtualBox 2.2, OpenVZ kernel 2.6.24-23-openvz) завелось с полоборота. Линукс совершенно не напрягает мак мини своим присутствием. Из отведенного гига для виртуальной машины реально расходуется чуть больше 300. Мак летает, линукс летает, контейнеры тоже летают. Все прекрасно. Пока не настает время перезагружаться.</p>
+
+<p>Ясное дело, после загрузки виртуалбокс не запускает никакие машины. Это грустно, но не смертельно. В комплекте виртуалбокса есть консольная утилита для запуска виртальных машин без привязки к пользовательскому интерфейсу. Пользоваться ей очень просто: <code>VBoxHeadless -startvm $VMID</code>. Идентификатор виртуальной машины узнать нетрудно: эта команда покажет подробный список машин <code>VBoxManage list vms</code>.</p>
+
+<p>Но изюминка этой статьи вовсе не в восторгах от современных технологий виртуализации. Дело в том, что запускать виртуалбокс при старте и выключать его при перезагрузке — задача нетривиальная.</p>
+
+<p>Для начала скажу, что мы запускаем VBoxHeadless с помощью встроенного в макос <a href="http://developer.apple.com/MacOsX/launchd.html">launchd</a>. Он умеет перезапускать процесс, если тот накернился. launchd умеет выдерживать паузы, запускать задания с определнным интервалом, при подключении диска. Да он, вообще, много чего умеет. В этом ему близок полюбившийся мне <a href="http://upstart.ubuntu.com/">UpStart</a>.</p>
+
+<p>Чтобы виртуальная машина запускалась при старте, необходимо положить следующий скрипт в папку <code>/Library/LaunchDaemons</code>:
+<pre><code class="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+  &lt;key&gt;RunAtLoad&lt;/key&gt;
+  &lt;true/&gt;
+  &lt;key&gt;KeepAlive&lt;/key&gt;
+  &lt;dict&gt;
+    &lt;key&gt;SuccessfulExit&lt;/key&gt;
+    &lt;false/&gt;
+  &lt;/dict&gt;
+  &lt;key&gt;Label&lt;/key&gt;
+  &lt;string&gt;ubuntu-openvz&lt;/string&gt;
+  &lt;key&gt;ProgramArguments&lt;/key&gt;
+  &lt;array&gt;
+    &lt;string&gt;VBoxHeadless&lt;/string&gt;
+    &lt;string&gt;-startvm&lt;/string&gt;
+    &lt;string&gt;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&lt;/string&gt;
+  &lt;/array&gt;
+  &lt;key&gt;Nice&lt;/key&gt;
+  &lt;integer&gt;3&lt;/integer&gt;
+  &lt;key&gt;GroupName&lt;/key&gt;
+  &lt;string&gt;staff&lt;/string&gt;
+  &lt;key&gt;UserName&lt;/key&gt;
+  &lt;string&gt;someuser&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre>
+Вместо иксов нужно подставить ид машины, которую будем запускать. И еще надо сменить владельца этого файла на рута. Назвать файл можно как вам удобно, но принят формат домен.задача. Например, <code>ru.company.virtualbox.ubuntu-vz</code>.</p>
+
+<p>А проблема со свзякой ланчд+виртуалбокс в том, что при перезагрузке ланчд шлет процессу виртуалбокса простой <code>SIGTERM</code>. После чего виртуальная машина ресетится и отключается. Состояние линукса внутри виртуалбокса не сохраняется никаким образом. Линукс даже не узнает, что машина скоро погаснет.</p>
+
+<p>В документации так прямо и написано: не умеешь ловить сигтерм — не лезь в ланчд. И как раз обучение виртуалбокса правильно обрабатывать сигтерм и есть та задача, которую решать было интересно.</p>
+
+<p>Сначала заменим в ланчдемонском конфиге эти строки:
+<pre><code class="xml">  &lt;array&gt;
+    &lt;string&gt;VBoxHeadless&lt;/string&gt;
+    &lt;string&gt;-startvm&lt;/string&gt;
+    &lt;string&gt;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&lt;/string&gt;
+  &lt;/array&gt;
+</code></pre>
+на эти:
+<pre><code class="xml">  &lt;array&gt;
+      &lt;string&gt;/usr/local/bin/vboxheadless-wrapper&lt;/string&gt;
+      &lt;string&gt;b25ac594-9b5e-4ac7-bc38-c105947bf2ad&lt;/string&gt;
+  &lt;/array&gt;
+</code></pre></p>
+
+<p>Внутри <code>vboxheadless-wrapper</code> написано следующее:
+<pre><code class="perl">#!/usr/bin/env perl
+use strict;
+
+my ($vm) = @ARGV;
+our $stopping = 0;
+
+$SIG{TERM} = sub { stop($vm); };
+
+start($vm);
+exit 0;
+
+
+sub start
+{
+	my $vm = shift;
+	# waiting for VB drivers to load
+	sleep 1 while scalar(grep { /org.virtualbox/ } `/usr/sbin/kextstat`) < 3;
+	my $res = system "/usr/bin/VBoxHeadless -startvm $vm";
+	# sleeping until exit()
+	unless ($res) { sleep while 1 };
+}
+
+sub stop
+{
+	return if $stopping;
+	$stopping = 1;
+	my $vm = shift;
+	exit system "/usr/bin/VBoxManage controlvm $vm savestate";
+}
+</code></pre></p>
+
+<p>Этот код делает вот что. Сначала запускает виртуалбокс и засыпает в вызове <code>system</code>. Он, скорее всего, не проснется раньше времени, но на всякий случай следующей строкой мы подстраховываемся. Далее, машина какое-то время работает. Потом кто-то перезагружает макос и скрипту от ланчд приходит сигтерм. Скрипт просит виртуалбокс сохранить состояние машины на диск. После этого процесс виртуальной машины успешно завершается и скрипт выходит с кодом 0.</p>
+
+<p>Все это на самом деле очень просто. Но эта конструкция все равно не заработала. А из-за того, что ланчд запускал наш скрипт еще до того, как ядро макоса загружало дрова виртуалбокса. Как раз от преждевременного запуска нас спасает строка <code>sleep 1 while scalar(grep { /org.virtualbox/ } `/usr/sbin/kextstat`) < 3;</code>. Тут перл ждет, пока не загрузится хотя бы три драйвера с именем, содержащим </code><code>org.virtualbox</code>. В моем случае это были следующие кексты: <code>org.virtualbox.kext.VBoxDrv</code>, <code>org.virtualbox.kext.VBoxUSB</code>, <code>org.virtualbox.kext.VBoxNetFlt</code>.</p>
+
+<p>После этого, виртуальной машиной можно управлять с помощью ланчд:
+<pre><code class="bash">launchctl start ubuntu-openvz
+launchctl stop ubuntu-openvz
+</code></pre></p>
+
+<p>Эх, люблю потанцевать! Особенно проникновенными считаю танцы с бубном :)</p>
+
+<p>Самый кайф в том, что можно подключиться по ссш, запустить, например, <code>ping</code> или <code>ab</code>, перезагрузить железку, и процесс пойдет дальше. При этом <code>ab</code>, пережив перезагрзку компа, не сообщил ни об одной ошибке. Состояние виртуальной машины сохраняется за 4 секунды. Восстанавливается — за 3. Восстановить виртуальную машину можно уже на другом компе, не потеряв ни одного соединения. Горячий перенос, кстати, умеет как сам виртуалбокс, так и опенвз внутри него :)</p>
+
+<p>Удачной виртуализации!</p>
+		</section>
+	</section>
+	
+	<dl class="tags">
+		<dt class="head">Теги:</dt>
+		<dd class="body">
+			<ul class="list"><li class="tag">сервер</li><li class="tag">launchd</li><li class="tag">mac</li><li class="tag">openvz</li><li class="tag">ubuntu</li><li class="tag">virtualbox</li></ul>
+		</dd>
+	</dl>
+	
+	<div class="comments">Очень жду ваших комментариев <a href="mailto:Комментарии блога Конфуция <comments@kung-fu-tzu.ru>?subject=Re: Mac OS Leopard + launchd + VBoxHeadless">на почту</a>.</div>
+</div>
+
+</div>
+<!--# include virtual="/inc/common-bottom.html" -->
+</body>
+</html>
