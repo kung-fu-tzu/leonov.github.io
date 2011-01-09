@@ -25,7 +25,7 @@
 		<dd class="body">
 			<ul class="list">
 			{% for tag in page.categories %}
-			<li class="tag">{{ tag }}</li>
+			<li class="tag" data-tag-value="{{ tag }}">{{ tag }}</li>
 			{% endfor %}
 			</ul>
 		</dd>
