@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>{{ page.title }} — {{ site.title }}</title>
+	<link rel="alternate" type="application/rss+xml" title="Блог Конфуция" href="http://feeds.feedburner.com/cmsbuilder"/>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" href="/t/common.css"/>
+</head>
+<body>
+<div class="main-wrapper">
+
+<a href="/" class="blog-name">{{ site.title }}</a>
+
+<div class="post">
+	<section>
+		<h class="title">{{ site.title }}</h>
+		<span class="date">{{ post.date | date: "%d.%m.%Y" }}</span>
+		<section class="content">
+		{{ content }}
+		</section>
+	</section>
+	
+	<dl class="tags">
+		<dt class="head">Теги:</dt>
+		<dd class="body">
+			<ul class="list">
+			{% for tag in post.categories %}
+			<li class="tag">{{ tag }}</li>
+			{% endfor %}
+			</ul>
+		</dd>
+	</dl>
+	
+	<div class="comments">Очень жду ваших комментариев <a href="mailto:Комментарии блога Конфуция <{{ site.author.email }}>?subject=Re: {{ post.title }}">на почту</a>.</div>
+</div>
+
+</div>
+
+<script type="text/javascript" src="/js/highlight/pack.js"></script>
+
+<script type="text/javascript">
+function onload ()
+{
+	// its all about deferred loading of the statistic stuff
+	
+	function include (src)
+	{
+		var me = arguments.callee
+		var cache = me.cache || (me.cache = {})
+		if (me.cache[src])
+			return me.cache[src]
+		var node = document.createElement('script')
+		node.type = 'text/javascript'
+		node.src = src
+		document.getElementsByTagName('head')[0].appendChild(node)
+		cache[src] = node
+		return node
+	}
+	
+	function count (e)
+	{
+		if (!window.Ya || !window._gat)
+			return
+		
+		clearInterval(timer)
+		
+		try { new Ya.Metrika(602975) } catch (ex) {}
+		try { _gat._getTracker('UA-4385386-2')._trackPageview() } catch (ex) {}
+	}
+	
+	var timer = setInterval(count, 500)
+	
+	function load ()
+	{
+		include('http://mc.yandex.ru/metrika/watch.js')
+		include('http://www.google-analytics.com/ga.js')
+	}
+	
+	setTimeout(load, 1000)
+}
+</script>
+
+<noscript><div style="position: absolute; left: -10px; top: -10px"><img src="//mc.yandex.ru/watch/602975"/></div></noscript>
+
+</body>
+</html>
