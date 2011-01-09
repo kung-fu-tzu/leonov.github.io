@@ -7,8 +7,6 @@ time: 23:13:22
 ---
 <p>Помогает запихнуть в строку немного яваскрипта. Функция очень полезна во всяких ленгвиджпаках. Весь яваскрипт выполняется без ограничений, так что будьте бдительны.</p>
 
-<p>Скачайте <a href="http://www.cmsbuilder.ru/blog/wp-content/uploads/2008/11/interpolate.js">версию 1.0b</a> (<a href="http://www.cmsbuilder.ru/blog/wp-content/uploads/2008/11/interpolate.mini.js">mini</a>) — наверняка пригодится ;)</p>
-
 <pre><code class="javascript">
 "Welcome to ${company}!".interpolateJS({company:'Programica'})
 //=> "Welcome to Programica!"
@@ -38,6 +36,8 @@ string.interpolateJS({x:2})
 //=> "2 + 2 = 4 :)"
 
 String.prototype.interpolateJS.cache[string]
-//=> function ($_$h) { with ($_$h) { return x + $_$s[1] + (x + 2); } }
+//=> function ($_$h) { with ($_$h) { return x + $_$s[1] + (x + 2) + $_$s[2]; } }
 </code></pre>
 </p>
+
+<p>Исходник <a href="https://github.com/kung-fu-tzu/liby/blob/master/src/modules/interpolate.js">в библиотеке</a>.</p>
