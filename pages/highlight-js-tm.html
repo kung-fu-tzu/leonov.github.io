@@ -1,0 +1,222 @@
+---
+title: "Тестим подсветку для яваскрипта"
+layout: page
+---
+<section>
+<pre><code class="javascript">
+function onload (a, b, c)
+{
+	// its all about deferred loading of the statistic stuff
+	
+	do return in if for while finally else
+	break catch instanceof with throw case
+	default try finally this switch continue typeof
+	delete this delete with new
+	
+	x.src.type.parentNode.nodeValue.nodeName.prototype
+	.parent.childNodes.firstChild.documentElement.href.next
+	src type parent href
+	().parent.blala.this.src.function
+	
+	a.sort().reverse().slice().splice().pop().shift().push().unshift().indexOf()
+	n.appendChild().removeChild(5).exec().test().apply().call()
+	n.    appendChild().removeChild(.removeChild (5).blabla().break()
+	"\n\r".4.'//' ? 5 : 6 + (/reg\d*exp\s+/)
+	
+	|| | && & >> << <= == === >= &>> -+= % * + a / b ^ $ @
+	$.ready($$$1 = 1.000000); $ = _asas = _$_
+	,;:
+	
+	// is a function
+	function $ (a, bc) {}
+	function function (a, bc) {}
+	function void (a, bc) {}
+	function shift(a, bc) {}
+	function (a, bc) {}
+	function(a, bc) {}
+	function (a, /* sdsd */, b // asasas
+		bc) {}
+	
+	// is not
+	function .shift(a, bc) {}
+	function void new (a, bc) {}
+	function void var {}
+	
+	Boolean Number String Date Array Object Function RegExp Math
+	document window event screen navigator Image History
+	console.log() console.warn()
+	
+	var STORAGE = {'function': 1, 'void': 1, 'var': 1, var: 321}
+	var SUPPORT = {document: 1, window: 1}
+	modes: [xyz: hljs.C_LINE_COMMENT_MODE]
+  
+	
+	true false null undefined
+	
+	123 1e456 1e-10 0x01111 0121212
+	
+	function include (src)
+	{
+		var me = arguments.callee
+		var cache = me.cache || (me.cache = {})
+		if (me.cache[src])
+			return me.cache[src]
+		var node = document.createElement('script')
+		node.type = 'text/javascript'
+		node.src = src
+		document.getElementsByTagName('head')[0].appendChild(node)
+		cache[src] = node
+		return node
+	}
+	
+	function count (e)
+	{
+		if (!window.Ya || !window._gat)
+			return
+		
+		clearInterval(timer)
+		
+		try { new Ya.Metrika(602975) } catch (ex) {}
+		try { _gat._getTracker('UA-4385386-2')._trackPageview() } catch (ex) {}
+	}
+	
+	var timer = setInterval(count, 500)
+	
+	function load ()
+	{
+		include('http://mc.yandex.ru/metrika/watch.js')
+		include('http://www.google-analytics.com/ga.js')
+	}
+	
+	setTimeout(load, 1000)
+}
+</code></pre>
+<pre><code class="javascript">
+// A stylesheet switcher for the test page. Not part of the highlight.js itself
+// (c) Vladimir Epifanov &lt;voldmar@voldmar.ru&gt;
+(function(container_id) {
+	if (window.addEventListener) {
+		var attach = function(el, ev, handler) {
+			el.addEventListener(ev, handler, false);
+		}
+	} else if (window.attachEvent) {
+		var attach = function(el, ev, handler) {
+			el.attachEvent('on' + ev, handler);
+		}
+	} else {
+		var attach = function(el, ev, handler) {
+			ev['on' + ev] = handler;
+		}
+	}
+
+
+	attach(window, 'load', function (sdsd) {
+		var current = null;
+
+		var info = {};
+		var links = document.getElementsByTagName('link');
+		var ul = document.createElement('ul')
+
+		for (var i = 0; (link = links[i]); i++) {
+			if (link.getAttribute('rel').indexOf('style') != -1
+				&& link.title) {
+
+				var title = link.title;
+
+				info[title] = {
+				'link': link,
+				'li': document.createElement('li')
+				}
+
+				ul.appendChild(info[title].li)
+				info[title].li.title = title;
+
+				info[title].link.disabled = true;
+
+				info[title].li.appendChild(document.createTextNode(title));
+				attach(info[title].li, 'click', (function (el) {
+					return function() {
+						current.li.className = '';
+						current.link.disabled = true;
+						current = el;
+						current.li.className = 'current';
+						current.link.disabled = false;
+					}})(info[title]));
+			}
+		}
+
+		current = info['Default']
+		current.li.className = 'current';
+		current.link.disabled = false;
+
+		ul.id = 'switch';
+		container = document.getElementById(container_id);
+	    container.appendChild(ul);
+	});
+
+})('styleswitcher');
+</code></pre>
+</section>
+
+<section>
+<a name="regexps"></a><h>Regular Expressions</h>
+
+<h>punctuation:</h>
+<pre><code class="javascript">
+load(/sdsd/, /bs/)
+{filt:/sd\s+d/}
+x = true ? /a/ : /b/; /mnc/
+else {/xyz/}
+[/abc/,/xyz/im]
+</code></pre>
+
+<h>operators:</h>
+<pre><code class="javascript">
+abc/sds/i // no regexps here
+abc*/\d\d/i.match("xxx").length
+abc=/s\d\/s/i
+-/sss/im/variable
+5 / 6 / 6 - /sdsddsd/i/5
+'exec' in /sds\d/
+x+/123/*10 //comment */
+</code></pre>
+
+<h>comments:</h>
+<pre><code class="javascript">
+abc=//comment/i
+-/sss///comment
+-/sss//variable
+x++ /sss//variable
+/sdsddsd/i/5//comment
+/xyz/*5//comment
+</code></pre>
+
+<h>keywords:</h>
+<pre><code class="javascript">
+'exec' in /sds\d/
+return /.*/
+case /.*///dsdsd
+break /nnn/
+typeof /rex/ == 'object'
+/sdsd/ instanceof /sdsdsd/.constructor
+with /nnn/ {delete /321/.x}
+</code></pre>
+
+<h>new line:</h>
+<pre><code class="javascript">
+/a/-/b/
+/sdsd/ig.test()
+// comment
+/sdsd/ig.test()
+x =
+/sdsd/ig.test()
+</code></pre>
+
+
+<h>broken:</h>
+<pre><code class="javascript">
++/a/ / /b/ // eats / / as an regexp
+</code></pre>
+
+
+</section>
