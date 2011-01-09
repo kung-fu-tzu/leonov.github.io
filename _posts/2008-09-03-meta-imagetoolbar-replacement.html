@@ -1,0 +1,25 @@
+---
+title: "Замена meta imagetoolbar"
+description: "Тем, кому надоело ставить этот тег на всех страницах."
+categories: [клиент, css, expressions, IE]
+layout: post
+time: 01:09:43
+---
+<p>Не хотите ставить <code>meta http-equiv="imagetoolbar" content="no"</code> на всех страницах? Не срабатывает <code>set_header</code>? Тогда поможет экспрешн.</p>
+
+<p><pre><code>
+img
+{
+  scrollbar-highlight-color: expression
+  (
+    (runtimeStyle.scrollbarHighlightColor = "transparent"),
+    (this.galleryImg='no')
+  )
+}
+
+</code></pre></p>
+
+<p>Ключевой момент — это <code>this.galleryImg='no'</code>. По строкам я разбил для красоты, перед использованием их надо объединить в одну.</p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/ms533774(VS.85).aspx">MSDN про galleryImg</a></p>
+

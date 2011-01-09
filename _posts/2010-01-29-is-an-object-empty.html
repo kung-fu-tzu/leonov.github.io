@@ -1,0 +1,91 @@
+---
+title: "Пуст ли объект?"
+description: "Как можно узнать, если ли в объекте какие-нибудь свойства."
+categories: [клиент, javascript]
+layout: post
+time: 11:43:12
+---
+<p>Сколько способов проверить объект (хеш) на пустоту?</p>
+
+<p>
+<pre><code class="javascript">
+var hash = {}
+JSON.stringify(hash) === '{}'
+Object.equals(hash, {}) // for in comparision
+Object.keys(hash).length === 0
+Object.isEmpty(hash) // for (var k in hash) return false
+</code></pre>
+</p>
+
+<section>
+<h>Потестим…</h>
+<pre><code class="javascript">
+Object.equals = function (a, b)
+{
+	for (var k in a)
+		if (!(k in b) || a[k] !== b[k])
+			return false
+	
+	for (var k in b)
+		if (!(k in a) || a[k] !== b[k])
+			return false
+	
+	return true
+}
+
+Object.keys = function (s)
+{
+	var r = []
+	for (var k in s)
+		r.push(k)
+	return r
+}
+
+Object.isEmpty = function (s)
+{
+	for (var k in s)
+		return false
+	return true
+}
+
+var hash = {},
+	count = 10000
+
+console.time('JSON')
+for (var i = 0; i < count; i++)
+	JSON.stringify(hash) === '{}'
+console.timeEnd('JSON')
+//=> 61ms
+
+console.time('equals')
+for (var i = 0; i < count; i++)
+	Object.equals(hash, {})
+console.timeEnd('equals')
+//=> 49ms
+
+console.time('keys.length')
+for (var i = 0; i < count; i++)
+	Object.keys(hash).length === 0
+console.timeEnd('keys.length')
+//=> 44ms
+
+console.time('isEmpty')
+for (var i = 0; i < count; i++)
+	Object.isEmpty(hash)
+console.timeEnd('isEmpty')
+//=> 38ms
+
+console.time('isEmpty inlined')
+for (var i = 0; i < count; i++)
+{
+	for (var k in hash)
+		false
+	true
+}
+console.timeEnd('isEmpty inlined')
+//=> 26ms
+</code></pre>
+
+<p>Тестил на самом старом интеловском маке (2 ГГц) в фаерфоксе 3.6.</p>
+
+</section>

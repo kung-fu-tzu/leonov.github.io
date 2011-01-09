@@ -1,0 +1,10 @@
+---
+title: "JSON для Ruby"
+description: "Ворчу про незрелость руби."
+categories: [сервер, json, ruby]
+layout: post
+time: 19:40:08
+---
+<p>Для руби есть три библиотеки работы с <a href="http://www.json.org/">JSON</a>. Быстрая <a href="http://json.rubyforge.org/">JSON</a>, в которой критичные по производительности части написаны на C. Медленная <a href="http://sourceforge.net/projects/json">json/objects</a> целиком на руби. А еще есть <a href="http://api.rubyonrails.com/classes/ActiveSupport/JSON.html">ActiveSupport::JSON</a>, которая, видимо, является развитием «json/objects» в мире рельс. Первая библиотека действительно в несколько раз шустрее остальных, но она не умеет отключать перевод юникодных символов (то есть всех наших с вами родных букв) в последовательности <code>\uXXXX</code>. Вторая библиотека по умолчанию их не экранирует, но тормозит. А третья экранирует, тормозит, и это тоже не отключается. В общем поддержка JSON в руби, на мой вкус, сыровата.</p>
+
+<p>Меньше всех не понравилась первая библиотека. Она хотя бы шустрая. А отключить экранирование помог <a href="http://www.cmsbuilder.ru/blog/wp-content/uploads/2009/01/json-113-force-dont-encode.patch">этот патч</a>.</p>

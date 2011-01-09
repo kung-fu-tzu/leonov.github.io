@@ -1,0 +1,146 @@
+---
+title: "Округляем"
+description: "Стопицот способов отбросить дробную часть числа."
+categories: [клиент, benchmark, int, javascript, round]
+layout: post
+time: 13:23:15
+---
+<section>
+<p>Сколько способов отбросить дробную часть числа есть в яваскрипте?
+<pre><code class="javascript">
+var t = 36.6
+Math.floor(t)
+parseInt(t)
+t - t % 1
+t & -1
++/^-?\d+/.exec(t)
++t.toFixed()
+t >> 0
+//=> 36
+</code></pre></p>
+
+<p><strong>UPD 2009-09-23</strong>: <a href="http://video.yandex.ru/users/ya-events/view/27/">Александр Тармолов</a> подзсказал метод <code>Number#toFixed()</code>, огромное ему спасибо — буду тестить :)</p>
+<p><strong>UPD 2010-01-14</strong>: придумалось еще <code>t >> 0</code></p>
+<p>Для отрицательного числа <code>floor()</code> подходит не очень, а <code>& -1</code> — для чисел больше десяти миллионов. Но в том-то и прелесть, что всегда можно выбрать подходящий вариант.</p>
+</section>
+
+<section>
+<h>Тестим</h>
+<p>Интересно, а как сильно тормозит каждый из вариантов?
+<pre><code class="javascript">
+(function(){
+console.time('empty')
+for (var i = 0.5; i < 100000; i++);
+console.timeEnd('empty')
+})();
+//=> 1ms
+
+
+(function(){
+var f = Math.floor
+console.time('floor')
+for (var i = 0.5; i < 100000; i++)
+	f(i)
+console.timeEnd('floor')
+})();
+//=> 1ms (round() и ceil() дают то же)
+
+(function(){
+console.time('Math.floor:Math.ceil')
+for (var i = 0.5; i < 100000; i++)
+	i >= 0 ? Math.floor(i) : Math.ceil(i)
+console.timeEnd('Math.floor:Math.ceil')
+})();
+//=> 36ms
+
+
+(function(){
+var f = Math.floor, c = Math.ceil
+console.time('var floor:ceil')
+for (var i = 0.5; i < 100000; i++)
+	i >= 0 ? f(i) : c(i)
+console.timeEnd('var floor:ceil')
+})();
+//=> 1ms
+
+
+(function(){
+console.time('parseInt')
+for (var i = 0.5; i < 100000; i++)
+	parseInt(i)
+console.timeEnd('parseInt')
+})();
+//=> 162ms
+
+
+(function(){
+var f = parseInt
+console.time('var parseInt')
+for (var i = 0.5; i < 100000; i++)
+	f(i)
+console.timeEnd('var parseInt')
+})();
+//=> 1ms
+
+
+(function(){
+console.time('%')
+for (var i = 0.5; i < 100000; i++)
+	i - i % 1
+console.timeEnd('%')
+})();
+//=> 3ms
+
+
+(function(){
+console.time('&')
+for (var i = 0.5; i < 100000; i++)
+	i & -1
+console.timeEnd('&')
+})();
+//=> 1ms
+
+
+(function(){
+console.time('>>')
+for (var i = 0.5; i < 100000; i++)
+	i >> 0
+console.timeEnd('>>')
+})();
+//=> 1ms
+
+
+(function(){
+var rex = /^-?\d+/
+console.time('toFixed')
+for (var i = 0.5; i < 100000; i++)
+	+i.toFixed()
+console.timeEnd('toFixed')
+})();
+//>>> 83ms
+
+
+(function(){
+console.time('rex')
+for (var i = 0.5; i < 100000; i++)
+	+/^-?\d+/.exec(i)
+console.timeEnd('rex')
+})();
+//=> 1100ms
+
+
+(function(){
+var rex = /^-?\d+/
+console.time('cached rex')
+for (var i = 0.5; i < 100000; i++)
+	+rex.exec(i)
+console.timeEnd('cached rex')
+})();
+//=> 1111ms
+</code></pre></p>
+
+<p>С регулярками просто пошутил. Кроме разброса по скорости округления, есть еще ограничения на значение округляемого числа. До миллиона все варианты отрабатывают хорошо, а дальше проверять пока не интересно.</p>
+
+<p>Ах, да, результаты для фаерфокса 3.5.7 на Core 2 Duo 2,66 ГГц 6 Мб.</p>
+
+</section>

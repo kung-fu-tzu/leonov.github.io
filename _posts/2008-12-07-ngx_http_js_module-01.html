@@ -1,0 +1,187 @@
+---
+title: "ngx_http_js_module-0.1"
+description: "Подробнее о том, как вкомпилить мою поделку в энжинкс."
+categories: [сервер, javascript, nginx, ngx_http_js_module, serverside javascript, spidermonkey]
+layout: post
+time: 20:44:00
+---
+<h3>Подготовка</h3>
+
+<p>Чтобы не отвлекаться от процесса сборки нжинкса, заранее скачаем все необходимые файлы:
+<ul>
+	<li>последний <a href="http://sysoev.ru/nginx/download.html">стабильный нжинкс</a> (у меня был <a href="http://sysoev.ru/nginx/nginx-0.6.34.tar.gz">nginx 0.6.34</a>)</li>
+	<li>релиз <a href="http://ftp.mozilla.org/pub/mozilla.org/js/">SpiderMonkey</a> (на этот момент <a href="http://ftp.mozilla.org/pub/mozilla.org/js/js-1.7.0.tar.gz">версия 1.7.0</a>)</li>
+	<li>свежая версия <a href="http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/">NSPR</a> (здесь использовалась <a href="http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v4.7.3/src/nspr-4.7.3.tar.gz">4.7.3</a>)</li>
+	<li>и собственно ngx_http_js_module <a href="http://www.cmsbuilder.ru/files/nginx.js/ngx_http_js_module-0.1.tgz">версии 0.1</a> (<b>UPD:</b> теперь и на <a href="http://github.com/kung-fu-tzu/ngx_http_js_module/">ГитХабе</a> по тегу <a href="http://github.com/kung-fu-tzu/ngx_http_js_module/tarball/0.1">0.1</a>)</li>
+</ul>
+</p>
+
+
+
+<h3 id="SpiderMonkeyFile">Собираем SpiderMonkey с поддержкой файлов</h3>
+
+<p>
+Сначала скомпилим и установим <a href="http://www.mozilla.org/projects/nspr/reference/html/priofnc.html">NSPR</a>. Без него у нас не будет поддержки класса <code>File</code> внутри SpiderMonkey.
+<pre><code class="bash">
+cd nspr-4.7.3/mozilla/nsprpub/
+./configure
+make
+sudo make install
+</code></pre>
+</p>
+
+<p>
+Затем скомпилим и установим SpiderMonkey. Официальный способ сборки требует для конфигурации autoconf <a href="http://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz">версии 2.13</a> от 1999 года (говорят, версия 2.50 и выше не подойдет). Скажу честно, собрать SpiderMonkey официальным способом так и не получилось. Да еще в мануале не пишут, как здесь включить поддержку файлов. Но, на всякий случай, вот этот способ:
+<pre><code class="bash">
+cd js/src
+autoconf-2.13
+./configure
+make
+sudo make install
+</code></pre>
+Если все собралось и установилось — прекрасно. Но файлов не будет, а без них нельзя.
+</p>
+
+<p>
+Нам достаточно собрать SpiderMonkey по старинке:
+<pre><code class="bash">
+cd js/src
+JS_HAS_FILE_OBJECT=1 \
+CFLAGS="-I/usr/local/include/nspr" \
+OTHER_LIBS="/usr/local/lib/libnspr4.dylib" \
+make -f Makefile.ref
+</code></pre>
+Вам, возможно, надо заменить значения переменных <code>CFLAGS</code> и <code>OTHER_LIBS</code> на значения принятые в вашей системе.
+</p>
+
+<p>
+Теперь проверим наличие рабочего класса <code>File</code>:
+<pre><code class="bash">
+echo "print (new File('.').parent)" | ./Darwin_DBG.OBJ/js
+#=> /Users/developer/Downloads/js/src
+</code></pre>
+</p>
+
+<p>
+И установим SpiderMonkey. Так как не работает <code>make install</code>, придется самим раскладывать все файлы по своим местам. На моем компе это делается так:
+<pre><code class="bash">
+# внутри js/src
+OBJ="Darwin_DBG.OBJ"
+sudo cp $OBJ/js /usr/local/bin
+sudo cp $OBJ/libjs.a /usr/local/lib
+sudo cp $OBJ/libjs.dylib /usr/local/lib
+
+sudo mkdir -p /usr/local/include/js
+sudo cp $OBJ/*.h /usr/local/include/js
+sudo cp *.h /usr/local/include/js
+sudo cp *.tbl /usr/local/include/js
+</code></pre>
+Замените <code>Darwin_DBG.OBJ</code> на то, что получилось у вашего компилятора. Исходники SpiderMonkey нам больше не нужны, их можно убрать, чтобы не мешали.
+</p>
+
+
+
+<h3>Собираем nginx c ngx_http_js_module</h3>
+
+<p>
+Распакуем <code>nginx_http_js_module.tgz</code>. Для удобства предположим, что у нас есть директория <code>/stuff</code> и в ней лежит папка с нашим модулем: <code>/stuff/ngx_http_js_module</code>. <!-- Относительные пути <code>configure нжинкса не приемлет. -->
+</p>
+
+<p>
+Сконфигурируем и скомпилируем нжинк с яваскриптом:
+<pre><code class="bash">
+cd nginx-0.6.34
+./configure --add-module=/stuff/ngx_http_js_module
+make
+</code></pre>
+Если у вас уже установлен нжинкс той версии, которую мы собрали, то выполнять <code>make install</code> не нужно. При запуске нжинкс будет искать <code>mime.types</code> и другие файлы в своей директории <code>/usr/local/nginx/</code>. Если вы уже ставили нжинкс, то эта директория существует и в ней есть все необходимые файлы. Если нет, то после <code>make</code> выполните <code>make install</code>.
+</p>
+
+
+
+<h3>Потестим</h3>
+
+<p>
+Запустим:
+<pre><code class="bash">
+# внутри nginx-0.6.34
+sudo mkdir -p /usr/local/nginx/js
+sudo cp /stuff/ngx_http_js_module/js/* /usr/local/nginx/js/
+export JSLIB="/stuff/ngx_http_js_module/lib"
+./objs/nginx -c /stuff/ngx_http_js_module/nginx.conf
+</code></pre>
+Опросим:
+<pre><code class="bash">
+curl http://localhost:8080/
+#=> ... Welcome to nginx! ...
+curl -v http://localhost:8080/test/page
+#=> Привет, Девелопер!
+#=> Ты вызвал страницу /test/page, методом GET, с IP 127.0.0.1
+</code></pre>
+</p>
+
+<p>
+И небольшой тест на скорость:
+<pre><code class="bash">
+ab -kc 10 -n 500 http://127.0.0.1:8080/test/page
+</code></pre>
+<pre><code class="bash">
+Concurrency Level:      10
+Time taken for tests:   0.075 seconds
+Complete requests:      500
+Failed requests:        0
+Write errors:           0
+Keep-Alive requests:    0
+Total transferred:      127000 bytes
+HTML transferred:       58500 bytes
+Requests per second:    <strong>6668.53</strong> [#/sec] (mean)
+Time per request:       1.500 [ms] (mean)
+Time per request:       0.150 [ms] (mean, across all concurrent requests)
+Transfer rate:          1654.11 [Kbytes/sec] received
+</code></pre>
+Тестил на первом поколении интеловских маков: Intel Core Duo 2 ГГц, 2 Мб кеша второго уровня, 1 Гб оперативки.
+</p>
+
+
+
+<h3>Ура!</h3>
+
+<p>
+Яваскрипт оказался очень шустрым. Два месяца назад тестовая сборка дала всего около 3000 запросов в секунду. Сегодняшняя версия дала 6600. Тестировал на одном и том же маке. Могу найти только два объяснения: либо нжинкс так прибавил в скорости, либо SpiderMonkey серьезно вырос за последнее время. Возможно, и то и другое. Получается, что используя фаерфокс, мы не только укрепляем клиентскую сторону веба, но и заглядываем в будущее серверной стороны. Как-то так.
+</p>
+
+
+
+<h3>Что дальше?</h3>
+
+<p>
+Расскажу, как устроен модуль внутри. Как он крепится к нжинксу, и как нжинкс обменивается данными с яваскриптом. Это, на мой взгляд, будет самое интересное. Архитектура нжинкса захватывает сложностью. Яваскрипт очень элегантен в своей простоте. Они такие разные.
+</p>
+
+
+
+<h3>Если не заводится</h3>
+
+<p>
+Иногда бывает так, что используешь указанные в руководстве версии, все делаешь правильно, а ничего не получается. Вот и со мной так было со SpiderMonkey 1.7.0. Скачал для написания поста новый архив, версия не изменилась, а содержимое архива изменилось. И не завелось. Чтобы уберечь вас от этих проблем, припас именно те файлики, которыми пользовался сам. Предлагаю в случае чего скачивать вот эти архивы:
+<ul>
+	<li><a href="http://www.cmsbuilder.ru/files/nginx.js/autoconf-2.13.tar.gz">autoconf-2.13.tar.gz</a></li>
+	<li><a href="http://www.cmsbuilder.ru/files/nginx.js/js-1.7.0.tar.gz">js-1.7.0.tar.gz</a></li>
+	<li><a href="http://www.cmsbuilder.ru/files/nginx.js/nginx-0.6.34.tar.gz">nginx-0.6.34.tar.gz</a></li>
+	<li><a href="http://www.cmsbuilder.ru/files/nginx.js/nspr-4.7.3.tar.gz">nspr-4.7.3.tar.gz</a></li>
+</ul>
+</p>
+
+
+
+<h3>Смотрите также</h3>
+
+<p>
+<ul>
+	<li>Искать описание структур и функций удобно на <a href="http://emiller.info/lxr/http/source/">lxr Эмиллера</a>.</li>
+	<li><a href="http://www.clanmills.com/articles/spidermonkey/#Content">Интересная статья Робина Миллза</a> о том, как собрать SpiderMonkey с поддержкой класса <code>File</code>. Ее лучше читать с отключенными стилями и картинками ;)</li>
+	<li>Думаю, пригодятся <a href="http://www.mozilla.org/js/js-file-object.html">доки по классу <code>File</code></a>.</li>
+	<li>Может понадобиться и <a href="https://developer.mozilla.org/En/SpiderMonkey/File_object">другая версия</a> доков про <code>File</code>.</li>
+	<li>Firefox на сервере: <a href="http://www.aptana.com/jaxer">Aptana Jaxer</a>. Впечатлил, но о нем потом.</li>
+</ul>
+</p>
