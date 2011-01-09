@@ -13,7 +13,7 @@
 
 <div class="post">
 	<section>
-		<h class="title">{{ site.title }}</h>
+		<h class="title">{{ page.title }}</h>
 		<span class="date">{{ post.date | date: "%d.%m.%Y" }}</span>
 		<section class="content">
 		{{ content }}
@@ -31,7 +31,7 @@
 		</dd>
 	</dl>
 	
-	<div class="comments">Очень жду ваших комментариев <a href="mailto:Комментарии блога Конфуция <{{ site.author.email }}>?subject=Re: {{ post.title }}">на почту</a>.</div>
+	<div class="comments">Очень жду ваших комментариев <a href="mailto:Комментарии блога Конфуция <{{ site.author.email }}>?subject=Re: {{ page.title }}">на почту</a>.</div>
 </div>
 
 </div>
