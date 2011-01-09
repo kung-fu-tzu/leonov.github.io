@@ -1,15 +1,18 @@
+---
+---
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>Блог Конфуция</title>
+	<title>{{ site.title }}</title>
+	<link rel="alternate" type="application/rss+xml" title="Блог Конфуция" href="http://feeds.feedburner.com/cmsbuilder"/>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" href="/t/common.css"/>
 	<link rel="openid.server" href="http://openid.yandex.ru/server/" />
 	<link rel="openid2.provider" href="http://openid.yandex.ru/server/" />
 	<link rel="openid.delegate" href="http://openid.yandex.ru/gojpeg/" />
 	<link rel="openid2.local_id" href="http://openid.yandex.ru/gojpeg/" />
-	<!--# include virtual="/inc/common-head.html" -->
 </head>
 <body>
-<!--# include virtual="/inc/common-top.html" -->
 <div class="main-wrapper">
 
 <h class="blog-name">Блог Конфуция</h>
@@ -19,6 +22,10 @@
 
 
 </div>
-<!--# include virtual="/inc/common-bottom.html" -->
+
+<script src="/js/track.js"></script>
+
+<noscript><div style="position: absolute; left: -10px; top: -10px"><img src="//mc.yandex.ru/watch/602975"/></div></noscript>
+
 </body>
 </html>
