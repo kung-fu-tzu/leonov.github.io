@@ -70,6 +70,7 @@ A.staticMethod()
 <pre><code class="javascript">
 function A () {}
 
+
 function B () {}
 B.prototype = new A()
 </code></pre>
@@ -86,6 +87,7 @@ A.prototype =
 {
 	methodA: function () {}
 }
+
 
 function B () {}
 B.prototype = new A()
@@ -107,6 +109,7 @@ A.prototype =
 	methodA: function () {}
 }
 
+
 function B () {}
 B.prototype = new A()
 B.prototype.methodB = function () {}
@@ -124,6 +127,7 @@ b.methodB()
 <h>Добавление кучи методов</h>
 <pre><code class="javascript">
 function A () {}
+
 
 function B () {}
 B.prototype = new A()
@@ -156,6 +160,7 @@ A.prototype =
 	methodA: function () {}
 }
 
+
 function B () {}
 B.prototype = new A()
 B.prototype.methodA = function () { alert(42) }
@@ -175,6 +180,7 @@ function A ()
 {
 	this.array = []
 }
+
 
 function B ()
 {
@@ -200,6 +206,7 @@ A.prototype =
 {
 	methodA: function () {}
 }
+
 
 function B () {}
 B.prototype = new A()
@@ -227,6 +234,7 @@ A.prototype =
 	methodA: function () {}
 }
 
+
 function B () {}
 B.prototype = new A()
 
@@ -234,6 +242,7 @@ B.prototype.methodA = function ()
 {
 	A.prototype.methodA.apply(this)
 }
+
 
 function C () {}
 C.prototype = new B()
@@ -259,6 +268,7 @@ A.prototype =
 {
 	methodA: function () {}
 }
+
 
 function B () {}
 B.prototype = new A()
