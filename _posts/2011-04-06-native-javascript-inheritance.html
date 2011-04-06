@@ -44,6 +44,18 @@ var a = new A()
 a.method()
 </code></pre>
 
-<p>Про прототипы мы всё знаем из книжек про яваскрипт.</p>
+<p>Методы добавляются с помощью прототипов. Про прототипы мы <a href="http://www.google.com/search?q=javascript+prototype+inheritance">всё уже знаем</a>.</p>
+</section>
+
+
+<section>
+<h>«Статический» метод</h>
+<pre><code class="javascript">
+function A () {}
+A.staticMethod = function () {}
+A.staticMethod()
+</code></pre>
+
+<p>В экземплярах <code>staticMethod</code> доступен не будет.</p>
 </section>
 
