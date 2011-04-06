@@ -325,7 +325,7 @@ var c = new C()
 b.setPosition(1, 2, 3)
 </code></pre>
 
-<p>Работает пошустрее, но сломается, если кто-то изменит <code>A.prototype</code>.</p>
+<p>В результате скрытого от нас последовательного вызова <code>A#setPosition()</code>, <code>B#setPosition()</code> и <code>C#setPosition()</code>, мы получим объект с данными <code>{x: 1, y: 2, z: 3}</code>.</p>
 </section>
 
 
