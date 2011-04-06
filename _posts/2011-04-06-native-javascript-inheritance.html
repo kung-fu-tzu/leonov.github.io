@@ -109,7 +109,7 @@ function A ()
 
 function B ()
 {
-	A.call(this)
+	A.apply(this)
 }
 B.prototype = new A()
 
@@ -117,7 +117,7 @@ var b = new B()
 b.array[42]
 </code></pre>
 
-<p>Если бы не выполнили <code>A.call(this)</code>, то <code>b.array</code> был бы пуст.</p>
+<p>Если бы не выполнили <code>A.apply(this)</code>, то <code>b.array</code> был бы пуст.</p>
 </section>
 
 
@@ -231,7 +231,7 @@ B.prototype = new A()
 
 B.prototype.methodA = function ()
 {
-	A.prototype.methodA.call(this)
+	A.prototype.methodA.apply(this)
 }
 
 function C () {}
@@ -239,7 +239,7 @@ C.prototype = new B()
 
 C.prototype.methodA = function ()
 {
-	B.prototype.methodA.call(this)
+	B.prototype.methodA.apply(this)
 }
 
 var c = new C()
@@ -265,7 +265,7 @@ B.prototype = new A()
 var superMethodA = A.prototype.methodA
 B.prototype.methodA = function ()
 {
-	superMethodA.call(this)
+	superMethodA.apply(this)
 }
 
 var b = new B()
