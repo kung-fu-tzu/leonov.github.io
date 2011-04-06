@@ -1,0 +1,49 @@
+---
+title: "Ручное наследование в яваскрипте"
+description: "Внимание! Фигура выполняется собственными руками, без страховки!"
+categories: [клиент, javascript, frameworkless]
+layout: post
+---
+<section>
+<p>Наследование без фреймворков вызывает панику даже у матерых яваскриптеров. Особенно, если надо не просто добавлять новые методы, а модифицировать поведение родительских. А между тем, процедура очень проста.</p>
+</section>
+
+
+<section>
+<h>Просто класс</h>
+<pre><code class="javascript">
+function A () {}
+
+var a = new A()
+</code></pre>
+
+<p>Да, как не удивительно, класс — это просто функция.</p>
+</section>
+
+
+<section>
+<h>Безымянный класс</h>
+<pre><code class="javascript">
+var o = new function () {}
+</code></pre>
+
+<p>Да, как не удивительно, классом может быть любая функция. Даже безымянное замыкание право имеет.</p>
+</section>
+
+
+<section>
+<h>Класс с методом</h>
+<pre><code class="javascript">
+function A () {}
+A.prototype =
+{
+	method: function () {}
+}
+
+var a = new A()
+a.method()
+</code></pre>
+
+<p>Про прототипы мы всё знаем из книжек про яваскрипт.</p>
+</section>
+
