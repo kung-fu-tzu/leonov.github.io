@@ -59,3 +59,58 @@ A.staticMethod()
 <p>В экземплярах <code>staticMethod</code> доступен не будет.</p>
 </section>
 
+
+<section>
+<h>Наследование в вакууме</h>
+<pre><code class="javascript">
+function A () {}
+
+function B () {}
+B.prototype = new A()
+</code></pre>
+
+<p>Да, именно <code>= new A()</code>, а не просто <code>= A()</code>.</p>
+</section>
+
+
+<section>
+<h>Небесполезное наследование</h>
+<pre><code class="javascript">
+function A () {}
+A.prototype =
+{
+	methodA: function () {}
+}
+
+function B () {}
+B.prototype = new A()
+
+var b = new B()
+b.methodA()
+</code></pre>
+
+<p>Получили в экземпляре класса <code>B</code> полезный <code>methodA()</code> от класса <code>A</code>.</p>
+</section>
+
+
+<section>
+<h>Конструктивное наследование</h>
+<pre><code class="javascript">
+function A ()
+{
+	this.array = []
+}
+
+function B ()
+{
+	A.call(this)
+}
+B.prototype = new A()
+
+var b = new B()
+b.array[42]
+</code></pre>
+
+<p>Если бы не выполнили <code>A.call(this)</code>, то <code>b.array</code> был бы пуст.</p>
+</section>
+
