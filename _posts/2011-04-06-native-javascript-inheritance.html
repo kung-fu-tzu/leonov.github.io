@@ -16,8 +16,8 @@ section h:hover a { display: inline; }
 </section>
 
 
-<section>
-<h>Просто класс <a id="simple" href="#simple">#</a></h>
+<section id="simple">
+<h>Просто класс <a href="#simple">#</a></h>
 <pre><code class="javascript">
 function A () {}
 
@@ -28,8 +28,8 @@ var a = new A()
 </section>
 
 
-<section>
-<h>Безымянный класс <a id="untitled" href="#untitled">#</a></h>
+<section id="untitled">
+<h>Безымянный класс <a href="#untitled">#</a></h>
 <pre><code class="javascript">
 var o = new function () {}
 </code></pre>
@@ -38,8 +38,8 @@ var o = new function () {}
 </section>
 
 
-<section>
-<h>Класс с методом <a id="method" href="#method">#</a></h>
+<section id="method">
+<h>Класс с методом <a href="#method">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -55,8 +55,8 @@ a.method()
 </section>
 
 
-<section>
-<h>«Статический» метод <a id="static" href="#static">#</a></h>
+<section id="static">
+<h>«Статический» метод <a href="#static">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.staticMethod = function () {}
@@ -67,8 +67,8 @@ A.staticMethod()
 </section>
 
 
-<section>
-<h>Наследование в вакууме <a id="inheritance" href="#inheritance">#</a></h>
+<section id="inheritance">
+<h>Наследование в вакууме <a href="#inheritance">#</a></h>
 <pre><code class="javascript">
 function A () {}
 
@@ -81,8 +81,8 @@ B.prototype = new A()
 </section>
 
 
-<section>
-<h>Небесполезное наследование <a id="useful-inheritance" href="#useful-inheritance">#</a></h>
+<section id="useful-inheritance">
+<h>Небесполезное наследование <a href="#useful-inheritance">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -102,8 +102,8 @@ b.methodA()
 </section>
 
 
-<section>
-<h>Добавление метода <a id="add-method" href="#add-method">#</a></h>
+<section id="add-method">
+<h>Добавление метода <a href="#add-method">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -125,8 +125,8 @@ b.methodB()
 </section>
 
 
-<section>
-<h>Добавление кучи методов <a id="bunch-of-methods" href="#bunch-of-methods">#</a></h>
+<section id="bunch-of-methods">
+<h>Добавление кучи методов <a href="#bunch-of-methods">#</a></h>
 <pre><code class="javascript">
 function A () {}
 
@@ -153,8 +153,8 @@ b.methodB3()
 </section>
 
 
-<section>
-<h>Замена метода <a id="replace-method" href="#replace-method">#</a></h>
+<section id="replace-method">
+<h>Замена метода <a href="#replace-method">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -175,8 +175,8 @@ b.methodA()
 </section>
 
 
-<section>
-<h>Конструктивное наследование <a id="constructor" href="#constructor">#</a></h>
+<section id="constructor">
+<h>Конструктивное наследование <a href="#constructor">#</a></h>
 <pre><code class="javascript">
 function A ()
 {
@@ -200,8 +200,8 @@ console.log(b1.array == b2.array)
 </section>
 
 
-<section>
-<h>Суперметод попроще <a id="simple-supermethod" href="#simple-supermethod">#</a></h>
+<section id="simple-supermethod">
+<h>Суперметод попроще <a href="#simple-supermethod">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -227,8 +227,8 @@ b.methodA()
 </section>
 
 
-<section>
-<h>Суперметод посложнее <a id="complex-supermethod" href="#complex-supermethod">#</a></h>
+<section id="complex-supermethod">
+<h>Суперметод посложнее <a href="#complex-supermethod">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -262,8 +262,8 @@ c.methodA()
 </section>
 
 
-<section>
-<h>Суперметод пошустрее <a id="faster-supermethod" href="#faster-supermethod">#</a></h>
+<section id="faster-supermethod">
+<h>Суперметод пошустрее <a href="#faster-supermethod">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -289,8 +289,8 @@ b.methodA()
 </section>
 
 
-<section>
-<h>Полезный суперметод <a id="supermethod-example" href="#supermethod-example">#</a></h>
+<section id="supermethod-example">
+<h>Полезный суперметод <a href="#supermethod-example">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
