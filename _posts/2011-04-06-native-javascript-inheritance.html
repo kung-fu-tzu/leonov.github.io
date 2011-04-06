@@ -114,3 +114,72 @@ b.array[42]
 <p>Если бы не выполнили <code>A.call(this)</code>, то <code>b.array</code> был бы пуст.</p>
 </section>
 
+
+<section>
+<h>Добавление метода</h>
+<pre><code class="javascript">
+function A () {}
+A.prototype =
+{
+	methodA: function () {}
+}
+
+function B () {}
+B.prototype = new A()
+B.prototype.methodB = function () {}
+
+var b = new B()
+b.methodA()
+b.methodB()
+</code></pre>
+
+<p>Теперь в экземпляре класса <code>B</code> есть оба полезных метода.</p>
+</section>
+
+
+<section>
+<h>Добавление кучи методов</h>
+<pre><code class="javascript">
+function A () {}
+
+function B () {}
+B.prototype = new A()
+
+var methodsB =
+{
+	methodB1: function () {},
+	methodB2: function () {},
+	methodB3: function () {}
+}
+
+Object.extend(B.prototype, methodsB)
+
+var b = new B()
+b.methodB1()
+b.methodB2()
+b.methodB3()
+</code></pre>
+
+<p><code><a href="http://www.google.com/search?q=Object.extend+JavaScript">Object.extend</a>(dst, src)</code> просто копирует свойства из <code>src</code> в <code>dst</code>. Если договориться с санитарами, можно заменить <code>Object.extend()</code> на цикл <code>for in</code> ;)</p>
+</section>
+
+
+<section>
+<h>Замена метода</h>
+<pre><code class="javascript">
+function A () {}
+A.prototype =
+{
+	methodA: function () {}
+}
+
+function B () {}
+B.prototype = new A()
+B.prototype.methodA = function () { alert(42) }
+
+var b = new B()
+b.methodA()
+</code></pre>
+
+<p>Вылетит алерт.</p>
+</section>
