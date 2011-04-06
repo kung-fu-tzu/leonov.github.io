@@ -7,7 +7,7 @@ layout: post
 <style>
 section { margin: 1.75em 0; }
 section h { font-size: 1.17em; font-weight: bold; }
-section h a { display: none; margin-left: 1em; }
+section h a { display: none; margin-left: 1em; border-bottom: 1px dashed; }
 section h:hover a { display: inline; }
 </style>
 
@@ -17,7 +17,7 @@ section h:hover a { display: inline; }
 
 
 <section>
-<h>Просто класс <a href="#simple">#</a></h>
+<h>Просто класс <a id="simple" href="#simple">#</a></h>
 <pre><code class="javascript">
 function A () {}
 
@@ -29,7 +29,7 @@ var a = new A()
 
 
 <section>
-<h>Безымянный класс</h>
+<h>Безымянный класс <a id="untitled" href="#untitled">#</a></h>
 <pre><code class="javascript">
 var o = new function () {}
 </code></pre>
@@ -39,7 +39,7 @@ var o = new function () {}
 
 
 <section>
-<h>Класс с методом</h>
+<h>Класс с методом <a id="method" href="#method">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -56,7 +56,7 @@ a.method()
 
 
 <section>
-<h>«Статический» метод</h>
+<h>«Статический» метод <a id="static" href="#static">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.staticMethod = function () {}
@@ -68,7 +68,7 @@ A.staticMethod()
 
 
 <section>
-<h>Наследование в вакууме</h>
+<h>Наследование в вакууме <a id="inheritance" href="#inheritance">#</a></h>
 <pre><code class="javascript">
 function A () {}
 
@@ -82,7 +82,7 @@ B.prototype = new A()
 
 
 <section>
-<h>Небесполезное наследование</h>
+<h>Небесполезное наследование <a id="useful-inheritance" href="#useful-inheritance">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -103,7 +103,7 @@ b.methodA()
 
 
 <section>
-<h>Добавление метода</h>
+<h>Добавление метода <a id="add-method" href="#add-method">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -126,7 +126,7 @@ b.methodB()
 
 
 <section>
-<h>Добавление кучи методов</h>
+<h>Добавление кучи методов <a id="bunch-of-methods" href="#bunch-of-methods">#</a></h>
 <pre><code class="javascript">
 function A () {}
 
@@ -154,7 +154,7 @@ b.methodB3()
 
 
 <section>
-<h>Замена метода</h>
+<h>Замена метода <a id="replace-method" href="#replace-method">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -176,7 +176,7 @@ b.methodA()
 
 
 <section>
-<h>Конструктивное наследование</h>
+<h>Конструктивное наследование <a id="constructor" href="#constructor">#</a></h>
 <pre><code class="javascript">
 function A ()
 {
@@ -201,7 +201,7 @@ console.log(b1.array == b2.array)
 
 
 <section>
-<h>Суперметод попроще</h>
+<h>Суперметод попроще <a id="simple-supermethod" href="#simple-supermethod">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -228,7 +228,7 @@ b.methodA()
 
 
 <section>
-<h>Суперметод посложнее</h>
+<h>Суперметод посложнее <a id="complex-supermethod" href="#complex-supermethod">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -263,7 +263,7 @@ c.methodA()
 
 
 <section>
-<h>Суперметод пошустрее</h>
+<h>Суперметод пошустрее <a id="faster-supermethod" href="#faster-supermethod">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
@@ -290,7 +290,7 @@ b.methodA()
 
 
 <section>
-<h>Полезный суперметод</h>
+<h>Полезный суперметод <a id="supermethod-example" href="#supermethod-example">#</a></h>
 <pre><code class="javascript">
 function A () {}
 A.prototype =
