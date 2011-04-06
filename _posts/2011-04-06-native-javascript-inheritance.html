@@ -99,30 +99,6 @@ b.methodA()
 
 
 <section>
-<h>Конструктивное наследование</h>
-<pre><code class="javascript">
-function A ()
-{
-	this.array = []
-}
-
-function B ()
-{
-	A.apply(this)
-}
-B.prototype = new A()
-
-var b1 = new B()
-var b2 = new B()
-console.log(b1.array == b2.array)
-//>>> false
-</code></pre>
-
-<p>Если бы не выполнили <code>A.apply(this)</code>, то <code>array</code> был бы один на все экземпляры <code>B</code>.</p>
-</section>
-
-
-<section>
 <h>Добавление метода</h>
 <pre><code class="javascript">
 function A () {}
@@ -189,6 +165,30 @@ b.methodA()
 </code></pre>
 
 <p>Вылетит алерт.</p>
+</section>
+
+
+<section>
+<h>Конструктивное наследование</h>
+<pre><code class="javascript">
+function A ()
+{
+	this.array = []
+}
+
+function B ()
+{
+	A.apply(this)
+}
+B.prototype = new A()
+
+var b1 = new B()
+var b2 = new B()
+console.log(b1.array == b2.array)
+//>>> false
+</code></pre>
+
+<p>Если бы не выполнили <code>A.apply(this)</code>, то <code>array</code> был бы один на все экземпляры <code>B</code>.</p>
 </section>
 
 
