@@ -288,6 +288,46 @@ b.methodA()
 
 
 <section>
+<h>Полезный суперметод</h>
+<pre><code class="javascript">
+function A () {}
+A.prototype =
+{
+	setPosition: function (x)
+	{
+		this.x = x
+	}
+}
+
+
+function B () {}
+B.prototype = new A()
+
+B.prototype.setPosition = function (x, y)
+{
+	A.prototype.setPosition.call(this, x)
+	this.y = y
+}
+
+
+function C () {}
+C.prototype = new B()
+
+C.prototype.setPosition = function (x, y, z)
+{
+	B.prototype.setPosition.call(this, x, y)
+	this.z = z
+}
+
+var c = new C()
+b.setPosition(1, 2, 3)
+</code></pre>
+
+<p>Работает пошустрее, но сломается, если кто-то изменит <code>A.prototype</code>.</p>
+</section>
+
+
+<section>
 <h>Ах, да!</h>
 <p>Все кусочки кода, конечно же, обернуты в <code>(function(){ /* код тут */ })()</code>. Тесты <a href="http://kung-fu-tzu.ru/liby/tests/manual-inherit.html">тут</a>.</p>
 </section>
