@@ -1,4 +1,3 @@
-
 # Hello there!
 My name is Peter. I'm 28. Live in Moscow, Russia.
 
@@ -56,7 +55,7 @@ Have no knowledge of **Word**, **Excel**, **PowerPoint** and so on with **Window
 
 The main two periods of my education/work/projects:
 
-1. 2006-2013
+## 2006-2013
 
 Single company, single big project: [www.inshaker.ru](http://www.inshaker.ru/)
 
@@ -72,7 +71,7 @@ As an outcome of this period I may count:
  - ngx_http_js_module: an experiment of embedding JS engine into the event based nginx http server;
  - bloggin on technologies: it helped me a lot to understand the experience I were getting.
 
-2. 2000-2006
+## 2000-2006
 
 Perl, Perl, Perl :)
 
