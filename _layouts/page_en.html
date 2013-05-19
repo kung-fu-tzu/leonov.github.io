@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 	<title>{{ page.title }} — {{ site.en.title }}</title>
-	<link rel="alternate" type="application/rss+xml" title="{{ site.en.title }}" href="http://feeds.feedburner.com/cmsbuilder"/>
+	<link rel="alternate" type="application/rss+xml" title="Блог Конфуция" href="http://feeds.feedburner.com/cmsbuilder"/>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" href="/t/common.css"/>
 </head>
@@ -14,24 +14,10 @@
 <div class="post">
 	<section>
 		<h class="title">{{ page.title }}</h>
-		<span class="date">{{ page.date | date: "%d.%m.%Y" }}</span>
 		<section class="content">
 		{{ content }}
 		</section>
 	</section>
-	
-	<dl class="tags">
-		<dt class="head">Теги:</dt>
-		<dd class="body">
-			<ul class="list">
-			{% for tag in page.categories %}
-			<li class="tag" data-tag-value="{{ tag }}">{{ tag }}</li>
-			{% endfor %}
-			</ul>
-		</dd>
-	</dl>
-	
-	<div class="comments">Can't wait your comments at <a href="mailto:Comment for {{ site.en.title }} <{{ site.en.author.email }}>?subject=Re: {{ page.title }}">email</a> or <a href="https://github.com/kung-fu-tzu/kung-fu-tzu.github.com/issues">at github</a>.</div>
 </div>
 
 </div>
