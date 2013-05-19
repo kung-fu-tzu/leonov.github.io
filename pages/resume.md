@@ -121,3 +121,4 @@ Do not forget to mention handy tools:
 
 I really like games Braid, FEZ, and Portal. And Machinarium too.
 In Quake-like game Sauerbraten (Cube 2) our office team of geeks gain a lot of frags last years.
+Confucius was my nickname in middle school.
