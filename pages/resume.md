@@ -1,3 +1,8 @@
+---
+title: "Peter Leonov's Resume β"
+layout: page_en
+---
+
 # Hello there!
 My name is Peter. I'm 28. Live in Moscow, Russia.
 
