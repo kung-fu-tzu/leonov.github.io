@@ -17,7 +17,7 @@ Let me try to save your time and define who I am and who not.
 
 ## What I can do not
 
-First of all I can't flawlessly speak **English**. Expect me stuck looking for a translation in a dictionary and messing up all the perfect continuous present simple stuff (as will be seen below). I can write a little letter (like this resume). Definitely, I can read internets, but reading a novel becomes pleasure mixed with pain. Also, I can understand native English speech at medium speed and complexity.
+First of all I can't flawlessly speak **English**. Expect me stuck looking for a translation in a dictionary and messing up all the perfect continuous present simple stuff (as will be seen below). I can write a little letter (like this resume). Definitely, I can read internets, but reading a novel becomes [pleasure](http://en.wikipedia.org/wiki/Winnie-the-Pooh) mixed with [pain](http://en.wikipedia.org/wiki/Dracula). Also, I can understand [native English speech](http://www.youtube.com/user/1veritasium) at medium speed and complexity.
 
 I do not know **Java**. At all. Yes, the syntax is familiar to me, OOP is a native thing to me, but the whole Java word is foreign.
 
