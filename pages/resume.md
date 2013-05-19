@@ -1,6 +1,7 @@
 ---
 title: "Peter Leonov's Resume β"
 description: "All about me as a professional."
+date: 2013-05-19
 categories: [personal]
 layout: post_en
 ---
