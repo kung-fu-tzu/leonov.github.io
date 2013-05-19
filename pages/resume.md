@@ -5,7 +5,7 @@ categories: [personal]
 layout: post_en
 ---
 
-# Hello there!
+## Hello there!
 My name is Peter. I'm 28. Live in Moscow, Russia.
 
 Tag cloud of me: JavaScript, HTML, CSS, Photoshop, Ruby, Perl, C, nginx, Linux.
@@ -14,7 +14,7 @@ Social: [Github](https://github.com/kung-fu-tzu), [LinkedIn](http://www.linkedin
 
 Let me try to save your time and define who I am and who not.
 
-# What I can do not
+## What I can do not
 
 First of all I can't flawlessly speak **English**. Expect me stuck looking for a translation in a dictionary and messing up all the perfect continuous present simple stuff (as will be seen below). I can write a little letter (like this resume). Definitely, I can read internets, but reading a novel becomes pleasure mixed with pain. Also, I can understand native English speech at medium speed and complexity.
 
@@ -32,7 +32,7 @@ Have no knowledge of **Word**, **Excel**, **PowerPoint** and so on with **Window
 
 
 
-# What I think I can do best
+## What I think I can do best
 
 **JavaScript** is the major programming language of mine for the last 7 years. I was dedicated to code client side apps 24/7. First line of JS code had been drop somewhat near 14 years ago. I guess there were more than 10,000 hours of programming JS.
 
@@ -42,7 +42,7 @@ Have no knowledge of **Word**, **Excel**, **PowerPoint** and so on with **Window
 
 
 
-# What I think I can do well
+## What I think I can do well
 
 **Ruby** is the second language of my last projects. First seen it in late 2006 and fell in love instantly. Switching from Perl to Ruby was a great period of time. From time to time Ruby helped me with sending emails, building simple HTTP daemons, proceeding Google Analytics output, converting images, bake web pages, and many more. And Rails are beautiful because of Ruby, of cause. For a month in 2007 I'v tried to write Ruby-to-JavaScript compiler. For the last month now in 2013 I'v participated in Opal project. It's main goal is to bring Ruby to the browser too. These two attempts of writing a Ruby in JavaScript gave me a much deeper view of the two languages.
 
@@ -58,11 +58,11 @@ Have no knowledge of **Word**, **Excel**, **PowerPoint** and so on with **Window
 
 
 
-# Background
+## Background
 
 The main two periods of my education/work/projects:
 
-## 2006-2013
+### 2006-2013
 
 Single company, single big project: [www.inshaker.ru](http://www.inshaker.ru/)
 
@@ -78,7 +78,7 @@ As an outcome of this period I may count:
  - ngx_http_js_module: an experiment of embedding JS engine into the event based nginx http server;
  - bloggin on technologies: it helped me a lot to understand the experience I were getting.
 
-## 2000-2006
+### 2000-2006
 
 Perl, Perl, Perl :)
 
@@ -89,7 +89,7 @@ The main project of this period is my beloved CMS Builder (first big thing in my
 Oh, yes. As most of us developers I did try to write a game. A 2D puzzle (quest) game based on some stories of teenagers. As always, the game ended up as an engine. It was based on DirectX (very old DirectDraw API) as a graphics engine and Perl as a script engine. All the mechanic and logic of the game was written in Perl. The two most interesting things are: fast 2D images and animation rendering, and binding the C++ code to the Perl script engine.
 
 
-# We need to go deeper
+## We need to go deeper
 
 Details on this coming soon:
 
@@ -103,12 +103,12 @@ Details on this coming soon:
 * Git
 
 
-## Education
+### Education
 
 Tell about two of universities, the diploma. MIT open courseware.
 
 
-## JavaScript
+### JavaScript
 
 Do not forget to mention handy tools:
 
@@ -116,7 +116,7 @@ Do not forget to mention handy tools:
     http://www.inshaker.ru/geeks/top-errors.html
 
 
-# Some lyrics
+## Some lyrics
 
 I really like games Braid, FEZ, and Portal. And Machinarium too.
 In Quake-like game Sauerbraten (Cube 2) our office team of geeks gain a lot of frags last years.
