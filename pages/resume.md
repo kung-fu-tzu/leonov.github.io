@@ -1,6 +1,8 @@
 ---
 title: "Peter Leonov's Resume β"
-layout: page_en
+description: "All about me as a professional."
+categories: [personal]
+layout: post_en
 ---
 
 # Hello there!
