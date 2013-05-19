@@ -11,7 +11,7 @@ a img { border: 0; }
 html, input, select, textarea, button { font-family: Tahoma, Arial, sans-serif; }
 section, h { display: block; }
 
-html { background: #eee; font-size: 22px; }
+html { background: #eee; font-size: 22px; line-height: 33px; }
 
 code { font-family: 'Lucida Console', 'courier new', monospace; line-height: 1em; }
 
@@ -45,7 +45,7 @@ code { font-family: 'Lucida Console', 'courier new', monospace; line-height: 1em
 .post h a { color: inherit; cursor: default; }
 .post h a:hover { text-decoration: none; }
 /*.post h a:hover:after { content: ' (anhor)'; opacity: 0.3; }*/
-.post p, .post dl, .post ol, .post ul { margin: 0.5em 0; }
+.post p, .post dl, .post ol, .post ul { margin: 0.9em 0; }
 .post ol, .post ul { margin-left: 2em; }
 .post ol li { list-style: decimal; }
 .post ul li { list-style: disc; }
