@@ -1,4 +1,6 @@
 safe: true
+lsi: false
+pygments: true
 permalink: /posts/:year/:month/:day/:title
 title: "Блог Конфуция"
 url: "http://kung-fu-tzu.ru"
