@@ -3,6 +3,7 @@ title: "Linux Containers (lxc) in Linode (xen)"
 description: "Virtualization squared."
 categories: [сервер, linux, vps, linode]
 layout: post
+lang: en
 ---
 
 Starting with Ubuntu 12.04 it is quite simple to create Linux Containers (aka LXC). As an OpenVZ fan and virtualization lover in general I've watching for LXC to come to life for a couple of years. Finally, the Containers become ready to use out of the box.
