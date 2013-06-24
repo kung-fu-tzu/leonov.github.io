@@ -1,0 +1,40 @@
+---
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>{{ site.ru.title }}</title>
+
+  <link rel="alternate" type="application/rss+xml" title="{{ site.ru.title }}" href="http://feeds.feedburner.com/cmsbuilder"/>
+  <link rel="alternate" type="application/rss+xml" title="{{ site.en.title }}" href="http://kung-fu-tzu.ru/en.xml"/>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" href="/t/common.css"/>
+
+  <link rel="openid.server" href="http://openid.yandex.ru/server/" />
+  <link rel="openid2.provider" href="http://openid.yandex.ru/server/" />
+  <link rel="openid.delegate" href="http://openid.yandex.ru/gojpeg/" />
+  <link rel="openid2.local_id" href="http://openid.yandex.ru/gojpeg/" />
+</head>
+<body>
+<div class="main-wrapper">
+
+<h class="blog-name">{{ site.ru.title }}</h>
+
+<ul class="posts-list">
+{% for post in site.posts %}{% if post.lang == "ru" %}
+<li class="item"><a class="post-preview" href="{{ post.url }}/">
+	<span class="title">{{ post.title }}</span>
+	<span class="description">{{ post.description }}</span>
+	<span class="date">{{ post.date | date: "%d.%m.%Y" }}</span>
+</a></li>
+{% endif %}{% endfor %}
+</ul>
+
+
+</div>
+
+<script src="/js/track.js"></script>
+<noscript><div style="position: absolute; left: -10px; top: -10px"><img src="//mc.yandex.ru/watch/602975"/></div></noscript>
+
+</body>
+</html>
