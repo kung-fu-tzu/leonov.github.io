@@ -9,15 +9,15 @@ layout: post_en
 ## Hello there!
 My name is Peter. I'm 28. Live in Moscow, Russia.
 
-Tag cloud of me: JavaScript, HTML, CSS, Photoshop, Ruby, Perl, C, nginx, Linux.
+Tag cloud of me: JavaScript, CSS, Ruby, Perl, C, nginx, Linux.
 
-Social: [Github](https://github.com/kung-fu-tzu), [LinkedIn](http://www.linkedin.com/profile/view?id=209349898)
+Social: [Github](https://github.com/kung-fu-tzu), [LinkedIn](http://www.linkedin.com/in/peterleonov)
 
-Let me try to save your time and define who I am and who not.
+Let me help you save your time with defining who I am and who not.
 
 ## What I can do not
 
-First of all I can't flawlessly speak **English**. Expect me stuck looking for a translation in a dictionary. But I've recently find a time to take English lessons on an every day basis. So, wait a little, and you even could hear me live! I can write a little letter (like this resume). Definitely, I can read internets, but reading a novel becomes [pleasure](http://en.wikipedia.org/wiki/Winnie-the-Pooh) mixed with [pain](http://en.wikipedia.org/wiki/Dracula). Also, I can understand [native English speech](http://www.youtube.com/user/1veritasium) at medium speed and complexity.
+First of all I can't flawlessly speak **English**. Expect me stuck looking for a translation in a dictionary. But I've recently find a time to take English lessons on an every day basis. So, wait a little, and you even could hear me live! I can write a small letter (like this resume), or participate in deeply nested conversation like [JIT method missing](https://github.com/opal/opal/issues/224), or [AST format for Opal code generator](https://github.com/opal/opal/issues/305), or may be the hardest [Please help with “Actions in Mid-Rule”](https://github.com/zaach/jison/issues/173). Definitely, I can read internets, but reading a novel becomes [pleasure](http://en.wikipedia.org/wiki/Winnie-the-Pooh) mixed with [pain](http://en.wikipedia.org/wiki/Dracula). Also, I can understand [native English speech](http://www.youtube.com/user/1veritasium) at medium speed and complexity.
 
 Here is [my bookshelf](http://www.shelfari.com/peter_leonov).
 
@@ -25,13 +25,13 @@ I do not know **Java**. At all. Yes, the syntax is familiar to me, OOP is a nati
 
 **Modern C++** with all its **STL**, **Boost**, atomics, compilers, and CPU-related tricks is precisely the thing I hove no idea of.
 
-I do understand **Ruby on Rails** with all its MVC, ActiveRecord, migrations and some more, but never had a chance to build a project up on it. Must say, that the raw Ruby language is my favorite one in many terms except performance ;)
+I do understand **Ruby on Rails** with all its MVC, ActiveRecord, migrations and some more, but never had a chance to build a project up on it in production. Must say, that the raw Ruby language is my favorite one in many terms except performance ;)
 
 I hate **XSLT**. Period.
 
-Have no knowledge of **Word**, **Excel**, **PowerPoint** and so on with **Windows** included. Mac OS X is the only OS of mine for more than 7 years to date.
+Have no knowledge of **Word**, **Excel**, **PowerPoint** and so on with **Windows** included. Mac OS X is the only OS of mine for years to date.
 
-**Linux as a kernel** is a mystery for me.
+**Linux as a kernel** is a mystery for me. But I really like Linus' showing fingers :)
 
 
 
@@ -41,13 +41,13 @@ Have no knowledge of **Word**, **Excel**, **PowerPoint** and so on with **Window
 
 **HTML** from v3 to v5, from `<TR><TD><TABLE><TD BACKGROUND="i/bg_1_14.gif"><FONT COLOR=RED>` to `<li class="goods-list-item">` in 13 years. From MSIE 5 to Chrome. From `&copy;` to `©`. From GIF to 8-bit semi-transparent PNG. From JPEG to… JPEG ;)
 
-**Testing code**. Oh, I really love it! The reliable code, what can be better? The Extreme Programming Explained book inspired me to test as much as a project permits. Working on a complex projects without a comprehensive test suit is a pain for developer and for the project leader. I saw such a mess from both sides.
+**Testing code**. Oh, I really love it! The reliable code, what can be better? The Extreme Programming Explained book inspired me to test as much as a project permits. Working on a complex projects without a comprehensive test suit is a pain for developer and for the project leader. I saw such mess from both sides.
 
 
 
 ## What I think I can do well
 
-**Ruby** is the second language of my last projects. First seen it in late 2006 and fell in love instantly. Switching from Perl to Ruby was a great period of time. From time to time Ruby helped me with sending emails, building simple HTTP daemons, proceeding Google Analytics output, converting images, bake web pages, and many more. And Rails are beautiful because of Ruby, of cause. For a month in 2007 I'v tried to write Ruby-to-JavaScript compiler. For the last month now in 2013 I'v participated in Opal project. It's main goal is to bring Ruby to the browser too. These two attempts of writing a Ruby in JavaScript gave me a much deeper view of the two languages.
+**Ruby** is the second language of my last projects. First seen it in late 2006 and fell in love instantly. Switching from Perl to Ruby I had great times. From time to time Ruby helped me with sending emails, building simple HTTP daemons, proceeding Google Analytics output, converting images, bake web pages, and many more. And Rails are beautiful because of Ruby, of cause. For a month in 2007 I'v tried to write Ruby-to-JavaScript compiler. For the last two months now in 2013 I'm participating in Opal project. It's main goal is to bring Ruby to the browser. These two attempts of porting Ruby to JavaScript gave me a much deeper view of both of the two languages.
 
 **Perl** gave me all I have today. It really made hard things possible. Way back in 1999 Perl began to teach me build big things revealing its power step by step, dose by dose. Perl can do anything, and so were me. I woke up and went to sleep with Programming Perl, Perl Cookbook, Perl DBI, and some smaller other books. Perl gave me my first well paid work in 2001. First seen in Hacker Magazine in 1999 and compiled last script in 2009 for me Perl was my best friend indeed. Thank you, Larry!
 
@@ -69,11 +69,11 @@ The main two periods of my education/work/projects:
 
 Single company, single big project: [www.inshaker.ru](http://www.inshaker.ru/)
 
-As a team lead, I did here all flavors of JavaScript. Were the administrator of a few linux servers. Had designed (UI only, not graphics) few heavily interactive pages, implemented them and do support them till now.
+As a team lead, I did here all flavors of JavaScript. Were the administrator of a few production linux servers and one virtual cluster for development. Had designed (UI only, not graphics) few heavily interactive pages, implemented them, and am supporting them right now.
 
 Also, Ruby helped me to do all kinds of the server side job.
 
-Besides coding, as far as I were a team lead and co-founder I have done lots of management. Hiring programmers, introducing them to the project, support them in the fly, and saying them a sad goodbyes - all the cycle I had pass several times.
+Besides coding, as far as I were a team lead and co-founder, and our business is web-centric I have done lots of management: participating in strategy definition, tactical process optimizations, hiring… Hiring programmers, introducing them to the project, support them in the fly, and saying them a sad goodbyes - all the cycle I had pass several times.
 
 As an outcome of this period I may count:
 
@@ -87,9 +87,24 @@ Perl, Perl, Perl :)
 
 As a perl developer I had an opportunity to work for some small companies as a junior developer, medium developer, a team lead, and work for for myself.
 
-The main project of this period is my beloved CMS Builder (first big thing in my life). It was a framework for development of complex web sites written in modern Perl. It has a lot of cool features (such as ORM) and I'm really proud of it.
+The main project of this period is my beloved CMS Builder (first big thing in my life). It was a framework for development of complex web sites written in modern Perl. It has a lot of cool features (such as ORM, mod_perl support, compiled templates, etc.) and I'm really proud of it.
 
-Oh, yes. As most of us developers I did try to write a game. A 2D puzzle (quest) game based on some stories of teenagers. As always, the game ended up as an engine. It was based on DirectX (very old DirectDraw API) as a graphics engine and Perl as a script engine. All the mechanic and logic of the game was written in Perl. The two most interesting things are: fast 2D images and animation rendering, and binding the C++ code to the Perl script engine.
+Oh, yes. As most of us developers I did try to write a game. A 2D puzzle (quest) game based on some stories of local teenagers. As always, the game ended up as a half-written engine. It was based on DirectX (very old DirectDraw API) as a graphics engine, and Perl as a game logic engine. All the mechanics of the game was written in Perl too. The two most interesting things was: fast 2D images and animation rendering, and binding the C++ code to the Perl script engine.
+
+## Some lyrics
+
+I really like games Braid, FEZ, and Portal. And Machinarium too.
+In Quake-like game Sauerbraten (Cube 2) our office team of geeks gain a lot of frags last years.
+Confucius was my nickname in middle school.
+
+
+----
+
+**The end of the finished part**
+
+----
+
+
 
 
 ## We need to go deeper
@@ -108,7 +123,7 @@ Details on this coming soon:
 
 ### Education
 
-Tell about two of universities, the diploma. MIT open courseware.
+Tell about two universities, the diploma. Silly attempts to listen all the MIT open courseware lectures :)
 
 
 ### JavaScript
@@ -118,9 +133,3 @@ Do not forget to mention handy tools:
     http://www.inshaker.ru/geeks/stats.html
     http://www.inshaker.ru/geeks/top-errors.html
 
-
-## Some lyrics
-
-I really like games Braid, FEZ, and Portal. And Machinarium too.
-In Quake-like game Sauerbraten (Cube 2) our office team of geeks gain a lot of frags last years.
-Confucius was my nickname in middle school.
