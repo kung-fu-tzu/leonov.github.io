@@ -97,42 +97,6 @@ Oh, yes. As most of us developers I did try to write a game. A 2D puzzle (quest)
 ## Some lyrics
 
 I really like games Braid, FEZ, and Portal. And Machinarium too.
-In Quake-like game Sauerbraten (Cube 2) our office team of geeks gain a lot of frags last years.
+In Quake-like game Sauerbraten (Cube 2) our office team of geeks gain a lot of frags years back.
 Confucius was my nickname in middle school.
-
-
-----
-
-**The end of the finished part**
-
-----
-
-
-
-
-## We need to go deeper
-
-Details on this coming soon:
-
-* Education
-* JavaScript
-* Ruby
-* Perl
-* C
-* C++
-* Linux
-* Git
-
-
-### Education
-
-Tell about two universities, the diploma. Silly attempts to listen all the MIT open courseware lectures :)
-
-
-### JavaScript
-
-Do not forget to mention handy tools:
-
-    http://www.inshaker.ru/geeks/stats.html
-    http://www.inshaker.ru/geeks/top-errors.html
 
