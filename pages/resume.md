@@ -37,27 +37,6 @@ Recent projects of mine:
 
 Tag cloud of me: JavaScript, CSS, Ruby, Perl, C, nginx, Linux.
 
-Let me help you save your time with defining who I am and who not.
-
-## What I can do not
-
-First of all I can't flawlessly speak **English**. Expect me stuck looking for a translation in a dictionary. But I've recently find a time to take English lessons on an every day basis. So, wait a little, and you even could hear me live! I can write a small letter (like this resume), or participate in deeply nested conversation like [JIT method missing](https://github.com/opal/opal/issues/224), or [AST format for Opal code generator](https://github.com/opal/opal/issues/305), or may be the hardest [Please help with “Actions in Mid-Rule”](https://github.com/zaach/jison/issues/173). Definitely, I can read internets, but reading a novel becomes [pleasure](http://en.wikipedia.org/wiki/Winnie-the-Pooh) mixed with [pain](http://en.wikipedia.org/wiki/Dracula). Also, I can understand [native English speech](http://www.youtube.com/watch?v=BickMFHAZR0) at medium speed and complexity.
-
-Here is [my bookshelf](http://www.shelfari.com/peter_leonov).
-
-I do not know **Java**. At all. Yes, the syntax is familiar to me, OOP is a native thing to me, but the whole Java word is foreign.
-
-**Modern C++** with all its **STL**, **Boost**, atomics, compilers, and CPU-related tricks is precisely the thing I hove no idea of.
-
-I do understand **Ruby on Rails** with all its MVC, ActiveRecord, migrations and some more, but never had a chance to build a project up on it in production. Must say, that the raw Ruby language is my favorite one in many terms except performance ;)
-
-I hate **XSLT**. Period.
-
-Have no knowledge of **Word**, **Excel**, **PowerPoint** and so on with **Windows** included. Mac OS X is the only OS of mine for years to date.
-
-**Linux as a kernel** is a mystery for me. But I really like Linus' showing fingers :)
-
-
 
 ## What I think I can do best
 
