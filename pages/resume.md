@@ -6,12 +6,36 @@ categories: [personal]
 layout: post_en
 ---
 
-## Hello there!
+## Hallo there!
+
 My name is Peter. I'm 28. Live in Moscow, Russia.
 
-Tag cloud of me: JavaScript, CSS, Ruby, Perl, C, nginx, Linux.
+Here are my profiles at [LinkedIn](http://www.linkedin.com/in/peterleonov) and [Github](https://github.com/kung-fu-tzu).
 
-Social: [Github](https://github.com/kung-fu-tzu), [LinkedIn](http://www.linkedin.com/in/peterleonov)
+Here are my major skills:
+
+  1. JavaScript: 10 years
+  2. HTML+CSS: 14 years
+  3. Ruby: 7 years
+  4. Perl: 10 years
+  5. C: 3 years
+
+I worked for:
+
+  1. 2006—2013: CTO at Inshaker
+  2. 2005: Lead Perl developer at CMSBuilder
+  3. 2004: Lead software engineer at Webwork
+  4. 2001: Programmer at Setimetria
+
+I've graduated at the Moscow Institute of Law in Economics.
+
+Recent projects of mine:
+
+  1. [Inshaker](http://www.inshaker.ru/)
+  2. [RetailStars](http://www.retailstars.ru/)
+  3. [Programica](http://www.programica.ru/light)
+
+Tag cloud of me: JavaScript, CSS, Ruby, Perl, C, nginx, Linux.
 
 Let me help you save your time with defining who I am and who not.
 
