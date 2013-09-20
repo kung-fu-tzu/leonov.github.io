@@ -98,5 +98,5 @@ Oh, yes. As most of us developers I did try to write a game. A 2D puzzle (quest)
 
 I really like games Braid, FEZ, and Portal. And Machinarium too.
 In Quake-like game Sauerbraten (Cube 2) our office team of geeks gain a lot of frags years back.
-Confucius was my nickname in middle school.
+I'm always in company of my very own beloved cat named Sharikh (Baloon in Russian). Confucius was my nickname in middle school.
 
