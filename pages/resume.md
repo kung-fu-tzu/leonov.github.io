@@ -29,11 +29,18 @@ I worked for:
 
 I've graduated at the Moscow Institute of Law in Economics.
 
-Recent projects of mine:
+Recent programmer's projects of mine:
 
-1. [Inshaker](http://www.inshaker.ru/)
-2. [RetailStars](http://www.retailstars.ru/)
-3. [Programica](http://www.programica.ru/light)
+1. [ruby-parser.js](https://github.com/kung-fu-tzu/ruby-parser.js): Ruby parser in pure JS;
+2. [bison-lalr1.js](https://github.com/kung-fu-tzu/bison-lalr1.js): JavaScript skeleton for Bison;
+3. [Liby.js](https://github.com/kung-fu-tzu/liby): my common.js with handy shims;
+4. [nginx.js](https://github.com/kung-fu-tzu/ngx_http_js_module): embedding SpiderMonkey in nginx web server.
+
+Recent projects with UI which I've developed:
+
+1. [Inshaker](http://www.inshaker.ru/): content site without a backend whatsoever;
+2. [RetailStars](http://www.retailstars.ru/): small but efficient web site for HRs from the world of retail;
+3. [Programica](http://www.programica.ru/light): still working promo site of our know how 2009 dated.
 
 Tag cloud of me: JavaScript, CSS, Ruby, Perl, C, nginx, Linux.
 
