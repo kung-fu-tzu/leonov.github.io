@@ -30,6 +30,17 @@ As a the Lead Front-end Developer I did, again, all kinds of tasks here: pixel p
 
 For an experienced backend developer it was a pleasure for me to make some server-side magic here.
 
+
+### Programica
+
+<a href="//www.youtube.com/watch?v=XRpqdcG1sc8"><img src="programica.jpg"></a>
+
+Back in late 2007, Programica was a small startup focused on building dynamic web sites with rich interfaces and animation known now as HTML5. We planned to take on outsource all the front end development. And we got a huge project — Inshaker.ru (see above) — which is alive and growing till now.
+
+As a the Front-end Developer I did, for the first time, all kinds of tasks here: zoomable pixel perfect markup, vanilla JS coding giving birth to [Liby.js](https://github.com/kung-fu-tzu/liby), implemented the job widget, ported and embedded lots of widgets from our recent projects. As you might expect all the unique widgets are built from scratch and are cross-browser starting with MSIE 6.
+
+
+
 ### More examples coming soon
 
 If you feel an interest in my work, please, check out [my resume](/pages/resume.html).
