@@ -17,4 +17,4 @@ As a front-end developer I've done all kinds of tasks here: pixel perfect markup
 
 I also did all the backend stuff with all them servers, round-robins, caches, etc.
 
-For details see [my resume](http://kung-fu-tzu.ru/pages/resume.html), please.
+For details see [my resume](/pages/resume.html), please.
