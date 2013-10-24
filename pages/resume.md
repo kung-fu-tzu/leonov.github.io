@@ -79,7 +79,7 @@ The main two periods of my education/work/projects:
 
 Single company, single big project: [www.inshaker.ru](http://www.inshaker.ru/)
 
-As a team lead, I did here all flavors of JavaScript. Were the administrator of a few production linux servers and one virtual cluster for development. Had designed (UI only, not graphics) few heavily interactive pages, implemented them, and am supporting them right now.
+As a team lead, I did here all flavors of JavaScript. Was the administrator of a few production linux servers and one virtual cluster for development. Had designed (UI only, not graphics) few heavily interactive pages, implemented them, and am supporting them right now.
 
 Also, Ruby helped me to do all kinds of the server side job.
 
