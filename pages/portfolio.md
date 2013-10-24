@@ -9,7 +9,7 @@ layout: post_en
 
 ### Inshaker
 
-![Alt text](inshaker.jpg)
+![www.inshaker.ru](inshaker.jpg)
 
 Inshaker is the Russian site about cocktails, bars, bartenders, and all [the cocktail culture](https://www.facebook.com/inshaker) as a whole. Launched in 2009 it is known to use as much of the client-side technology as it is sane to.
 
@@ -17,4 +17,4 @@ As a front-end developer I've done all kinds of tasks here: pixel perfect markup
 
 I also did all the backend stuff with all them servers, round-robins, caches, etc.
 
-For details see [my resume](/pages/resume.html), please.
+For more details see [my resume](/pages/resume.html), please.
