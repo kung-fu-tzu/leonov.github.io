@@ -24,7 +24,7 @@ Here are my major skills:
 
 I worked for:
 
-1. 2006—2013: CTO at Inshaker
+1. 2006—2013: Lead Developer at Inshaker
 2. 2005: Lead Perl developer at CMSBuilder
 3. 2004: Lead software engineer at Webwork
 4. 2001: Programmer at Setimetria
