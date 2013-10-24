@@ -9,7 +9,7 @@ layout: post_en
 
 ### Inshaker
 
-![www.inshaker.ru](inshaker.jpg)
+<img src="inshaker.jpg">
 
 Inshaker is the Russian site about cocktails, bars, bartenders, and all [the cocktail culture](https://www.facebook.com/inshaker) as a whole. Launched in 2009 it is known to use as much of the client-side technology as it is sane to.
 
