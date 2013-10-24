@@ -10,7 +10,7 @@ layout: post_en
 
 My name is Peter. I'm 28. Live in Moscow, Russia.
 
-Here are my profiles at [LinkedIn](http://www.linkedin.com/in/peterleonov) and [Github](https://github.com/kung-fu-tzu).
+Here are my profiles at [LinkedIn](http://www.linkedin.com/in/peterleonov) and [Github](https://github.com/kung-fu-tzu). Also, please see [my portfolio](http://kung-fu-tzu.ru/pages/portfolio.html).
 
 Here are my major skills:
 
