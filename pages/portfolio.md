@@ -13,7 +13,7 @@ layout: post_en
 
 [Inshaker](http://www.inshaker.ru/) is the Russian site about cocktails, bars, bartenders, and all [the cocktail culture](https://www.facebook.com/inshaker) as a whole. Launched in 2009 it is known to use as much of presentational technology as it is sane to.
 
-As the Lead Front-end Developer I did all kinds of tasks here: pixel perfect markup, vanilla JS coding, implementing widgets, UI design, and more. All the widgets are hand made with love. This project survived zillions of redesigns, markup refactorings, logic and UI rewrites, and, especially the migration from Liby 0.1 to Liby 0.3 with all new portability layer, event system, etc. As a result of such a significant period of evolution the project has got a strict MVC implementation, in-memory database with indices, lazy-everything lists, and blazing fast content rendering and caching technics. I'm proud of this imperfect but very well shaped peace of software :)
+As the Lead Front-end Developer I did all kinds of tasks here: pixel perfect markup, vanilla JS coding, implementing widgets, UI design, and more. All the widgets are hand made with love. This project survived zillions of redesigns, markup refactorings, logic and UI rewrites, and, especially the migration from Liby 0.1 to Liby 0.3 with all new portability layer, event system, etc. As a result of such a significant and active period of evolution the project has got a strict MVC implementation, in-memory database with indices, lazy-everything lists, and blazing fast content rendering and caching technics. I'm proud of this imperfect but very well shaped peace of software :)
 
 As a team leader I was responsible to build, teach and coordinate a small changing team of programmers connecting them with the management.
 
