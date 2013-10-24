@@ -40,7 +40,12 @@ Back in late 2007, [Programica](http://www.programica.ru/) was a small startup f
 As a the Front-end Developer I did, for the first time, all kinds of tasks here: zoomable pixel perfect markup, vanilla JS coding giving birth to [Liby.js](https://github.com/kung-fu-tzu/liby), implemented the job widget, ported and embedded lots of widgets from our recent projects. As you might expect all the unique widgets are built from scratch and are cross-browser starting with MSIE 6.
 
 
+### Designer's homepage
+
+<a href="//www.youtube.com/watch?v=_staAlDnS1s"><img src="zhuravlev.jpg"></a>
+
+[Sasha Zhuravlev homepage](http://zhuravlev.programica.ru/) is where for the first time I tried to implement inertia in addition to the normal animation. Homepage owner was happy to play with the inertial scrolling for hours. Dated 2007 the markup and the JS still working fine in modern browsers untouched.
 
 ### More examples coming soon
 
-If you feel an interest in my work, please, check out [my resume](/pages/resume.html).
+If you feel interested in my work, please, check out [my resume](/pages/resume.html).
