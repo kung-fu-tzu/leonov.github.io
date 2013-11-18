@@ -6,7 +6,7 @@ categories: [personal]
 layout: post_en
 ---
 
-## Hallo there!
+## Hello there!
 
 My name is Peter. I'm 28. Live in Moscow, Russia.
 
@@ -29,7 +29,7 @@ I worked for:
 3. 2004: Lead software engineer at Webwork
 4. 2001: Programmer at Setimetria
 
-I've graduated at the Moscow Institute of Law in Economics.
+I graduated at the Moscow Institute of Law in Economics.
 
 Recent programmer's projects of mine:
 
@@ -53,21 +53,21 @@ Tag cloud of me: JavaScript, CSS, Ruby, Perl, C, nginx, Linux.
 
 **HTML** from v3 to v5, from `<TR><TD><TABLE><TD BACKGROUND="i/bg_1_14.gif"><FONT COLOR=RED>` to `<li class="goods-list-item">` in 13 years. From MSIE 5 to Chrome. From `&copy;` to `©`. From GIF to 8-bit semi-transparent PNG. From JPEG to… JPEG ;)
 
-**Testing code**. Oh, I really love it! The reliable code, what can be better? The Extreme Programming Explained book inspired me to test as much as a project permits. Working on a complex projects without a comprehensive test suit is a pain for developer and for the project leader. I saw such mess from both sides.
+**Testing code**. Oh, I really love it! The reliable code, what can be better? The Extreme Programming Explained book inspired me to test as much as a project permits. Working on a complex projects without a comprehensive test suite is a pain for developer and for the project leader. I saw such mess from both sides.
 
 
 
 ## What I think I can do well
 
-**Ruby** is the second language of my last projects. First seen it in late 2006 and fell in love instantly. Switching from Perl to Ruby I had great times. From time to time Ruby helped me with sending emails, building simple HTTP daemons, proceeding Google Analytics output, converting images, bake web pages, and many more. And Rails are beautiful because of Ruby, of cause. For a month in 2007 I'v tried to write Ruby-to-JavaScript compiler. For the last two months now in 2013 I'm participating in Opal project. It's main goal is to bring Ruby to the browser. These two attempts of porting Ruby to JavaScript gave me a much deeper view of both of the two languages.
+**Ruby** is the second language of my last few projects. First saw it in late 2006 and fell in love instantly. Switching from Perl to Ruby I had great times. From time to time Ruby helped me with sending emails, building simple HTTP daemons, proceeding Google Analytics output, converting images, baking web pages, and many more. And Rails are beautiful because of Ruby, of course. For a month in 2007 I tried to write Ruby-to-JavaScript compiler. For the last two months now in 2013 I'm participating in an Opal project. It's main goal is to bring Ruby to the browser. These two attempts of porting Ruby to JavaScript gave me a much deeper view of both of the two languages.
 
-**Perl** gave me all I have today. It really made hard things possible. Way back in 1999 Perl began to teach me build big things revealing its power step by step, dose by dose. Perl can do anything, and so were me. I woke up and went to sleep with Programming Perl, Perl Cookbook, Perl DBI, and some smaller other books. Perl gave me my first well paid job in 2001. First seen in Hacker Magazine in 1999 and compiled last script in 2009 for me Perl was my best friend indeed. Thank you, Larry!
+**Perl** gave me all I have today. It really made hard things possible. Way back in 1999 Perl began to teach me to build big things revealing its power step by step, dose by dose. Perl can do anything, and so could I. I woke up and went to sleep with Programming Perl, Perl Cookbook, Perl DBI, and other smaller books. Perl gave me my first well paid job in 2001. First seen in Hacker Magazine in 1999 and compiled last script in 2009 for me Perl was my best friend indeed. Thank you, Larry!
 
-**C** has been around for ever. When I was 13, the first academic lessons of programming languages I'v ever got were in C. Then, reading books about Linux kernel, networking daemons, and filesystem I saw lots of examples in C. And than C again in the nginx project. The latter forced me to re-learn C again mixed with async event based network programming on the fly. That was very hard but fun and I can't wait to participate in such a hardcore in future.
+**C** has been around for ever. When I was 13, the first academic lessons of programming languages I ever got were in C. Then, reading books about Linux kernel, networking daemons, and filesystems I saw lots of examples in C. And than C again in the nginx project. The latter forced me to re-learn C again mixed with async event based network programming on the fly. That was very hard but fun and I can't wait to participate in such a hardcore project in future.
 
-**Linux** as an OS is a home, sweet home for me. No way to say I'm a hardcore system administrator, but I can imagine me building a backend on linux only. The fist Linux disto I saw was Red Hat Linux in 2000. My friend and me were trying to install it on a PC with no success except getting the command prompt and listing directories. But those were directories of some alien technology, of Linux :)
+**Linux** as an OS is a home, sweet home for me. No way to say I'm a hardcore system administrator, but I can imagine me building a backend on linux only. The fist Linux disto I saw was Red Hat Linux in 2000. My friend and me were trying to install it on a PC with no success except getting the command line prompt and listing directories. But those were directories of some alien technology, of Linux :)
 
-**Git** have saved me amount of time in half the size of my life already, and going to save much much more. What does it means “to be good at Git”? IMHO, that means thoughtful branching, clean and frequent atomic commits, good commit annotations, rebase with cleanup before push, bisect, and many more handy things. Everything starts with `git init`.
+**Git** has saved me an amount of time in half the size of my life already, and going to save much much more. What does it means “to be good at Git”? IMHO, that means thoughtful branching, clean and frequent atomic commits, good commit annotations, rebase with cleanup before push, bisect, and many more handy things. Everything starts with `git init`.
 
 **Usability** rules everything. Those underestimating UI role pay twice for any step in an application development. For the last 6 years I did review and create UI design. It is really fun to imagine all the rotes users may pass through the UI, predict all the use cases, test, and optimize every UI element to gain a harmony in code, style and action.
 
