@@ -72,40 +72,38 @@ Tag cloud of me: JavaScript, CSS, Ruby, Perl, C, nginx, Linux.
 **Usability** rules everything. Those underestimating UI role pay twice for any step in an application development. For the last 6 years I did review and create UI design. It is really fun to imagine all the rotes users may pass through the UI, predict all the use cases, test, and optimize every UI element to gain a harmony in code, style and action.
 
 
-
 ## Background
 
-The main two periods of my education/work/projects:
+The two main periods of my education/work/projects:
 
 ### 2006-2013
 
 Single company, single big project: [www.inshaker.ru](http://www.inshaker.ru/)
 
-As a team lead, I did here all flavors of JavaScript. Was the administrator of a few production linux servers and one virtual cluster for development. Had designed (UI only, not graphics) few heavily interactive pages, implemented them, and am supporting them right now.
+As a team leader, I did here all flavors of JavaScript. Was the administrator of a few production linux servers and one virtual cluster for development. Had designed (UI only, not graphics) few heavily interactive pages, implemented them, and am supporting them right now.
 
-Also, Ruby helped me to do all kinds of the server side job.
+Also, Ruby helped me to do all kinds of server side jobs.
 
-Besides coding, as far as I were a team lead and co-founder, and our business is web-centric I have done lots of management: participating in strategy definition, tactical process optimizations, hiring… Hiring programmers, introducing them to the project, support them in the fly, and saying them a sad goodbyes - all the cycle I had pass several times.
+Besides coding, as a team leader and a co-founder of Inshaker I have done lots of management tasks: participating in strategy definition, tactical process optimizations, hiring programmers, introducing them to the project, supporting them in the fly - this cycle I had to pass several times.
 
 As an outcome of this period I may count:
 
- - liby.js (second big thing in my life): full stack JS library and widget set for browsers from MSIE 6 to the latest Chrome;
+ - liby.js (second big thing in my life): full stack JS library and a set of widgets for browsers from MSIE 6 to the latest Chrome;
  - ngx_http_js_module: an experiment of embedding JS engine into the event based nginx http server;
- - bloggin on technologies: it helped me a lot to understand the experience I were getting.
+ - bloggin on technologies: it helped me a lot to understand the experience I was getting.
 
 ### 2000-2006
 
 Perl, Perl, Perl :)
 
-As a perl developer I had an opportunity to work for some small companies as a junior developer, medium developer, a team lead, and work for for myself.
+As a perl developer I had an opportunity to work for some small companies as a junior developer, medium developer, a team leader and work for for myself.
 
-The main project of this period is my beloved CMS Builder (first big thing in my life). It was a framework for development of complex web sites written in modern Perl. It has a lot of cool features (such as ORM, mod_perl support, compiled templates, etc.) and I'm really proud of it.
+The main project of this period is my beloved CMS Builder (first big thing in my life). It was a framework for developing complex web sites written in modern Perl. It had a lot of cool features (such as ORM, mod_perl support, compiled templates, etc.) and I'm really proud of it.
 
-Oh, yes. As most of us developers I did try to write a game. A 2D puzzle (quest) game based on some stories of local teenagers. As always, the game ended up as a half-written engine. It was based on DirectX (very old DirectDraw API) as a graphics engine, and Perl as a game logic engine. All the mechanics of the game was written in Perl too. The two most interesting things was: fast 2D images and animation rendering, and binding the C++ code to the Perl script engine.
+Oh, yes. As most of us developers, I did try to write a game. A 2D puzzle (quest) game based on some stories of local teenagers. As always, the game ended up as a half-written engine. It was based on DirectX (very old DirectDraw API) as a graphics engine, and Perl as a game logic engine. All the mechanics of the game was written in Perl too. The two most interesting things were: fast 2D images and animation rendering, and binding the C++ code to the Perl script engine.
 
 ## Some lyrics
 
 I really like games Braid, FEZ, and Portal. And Machinarium too.
-In Quake-like game Sauerbraten (Cube 2) our office team of geeks gain a lot of frags years back.
+In Quake-like game Sauerbraten (Cube 2) our office team of geeks gain a lot of frags years back then.
 I'm always in company of my very own beloved cat named Sharikh (Baloon in Russian). Confucius was my nickname in middle school.
-
