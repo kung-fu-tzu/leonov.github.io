@@ -1,7 +1,7 @@
 
 ## Привет!
 
-Меня зовут Петр. Мне 28 лет и живу я в Москве.
+Меня зовут Петр. Мне 29 лет и живу я в Москве.
 
 У меня есть профайл [LinkedIn](http://www.linkedin.com/in/peterleonov) и акканут на [Github](https://github.com/kung-fu-tzu).
 
@@ -9,7 +9,7 @@
 
 1. JavaScript: 10 лет
 2. HTML+CSS: 14 лет
-3. Ruby: 7 лет
+3. Ruby: 8 лет
 4. Perl: 10 лет
 5. C: 3 года
 
