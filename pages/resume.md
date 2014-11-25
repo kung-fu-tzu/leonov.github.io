@@ -8,7 +8,7 @@ layout: post_en
 
 ## Hello there!
 
-My name is Peter. I'm 28. Live in Moscow, Russia.
+My name is Peter. I'm 29 (born in 1985). Live in Moscow, Russia.
 
 Here are my profiles at [LinkedIn](http://www.linkedin.com/in/peterleonov) and [Github](https://github.com/kung-fu-tzu).
 
@@ -18,18 +18,18 @@ Here are my major skills:
 
 1. JavaScript: 10 years
 2. HTML+CSS: 14 years
-3. Ruby: 7 years
+3. Ruby: 8 years
 4. Perl: 10 years
 5. C: 3 years
 
-I worked for:
+Worked for:
 
 1. 2006—2014: Lead Developer at Inshaker
 2. 2005-2006: Lead Perl developer at CMSBuilder
 3. 2004: Software engineer at Webwork
 4. 2001: Programmer at Setimetria
 
-I graduated at the Moscow Institute of Law in Economics.
+Graduated at the Moscow Institute of Law in Economics.
 
 Recent programmer's projects of mine:
 
@@ -40,9 +40,10 @@ Recent programmer's projects of mine:
 
 Recent projects with UI which I've developed:
 
-1. [Inshaker](http://www.inshaker.ru/): content site without a backend whatsoever;
-2. [RetailStars](http://www.retailstars.ru/): small but efficient web site for HRs from the world of retail;
-3. [Programica](http://www.programica.ru/light): still working promo site of our know how 2009 dated.
+1. [Inshaker.com](http://uk.inshaker.com/): not so simple RoR based version of Inshaker;
+2. [Inshaker.ru](http://www.inshaker.ru/): content site without a backend whatsoever;
+3. [RetailStars](http://www.retailstars.ru/): small but efficient web site for HRs from the world of retail;
+4. [Programica](http://www.programica.ru/light): still working promo site of our know how 2009 dated.
 
 Tag cloud of me: JavaScript, CSS, Ruby, Perl, C, nginx, Unix, TDD, Git.
 
