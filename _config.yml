@@ -1,7 +1,6 @@
 safe: true
 lsi: false
-pygments: true
-permalink: /posts/:year/:month/:day/:title
+permalink: /posts/:year-:month-:day-:title
 url: "http://leonov.net"
 title: "Peter Leonov's Blog"
 author:
