@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 	<title>{{ page.title }} — {{ site.en.title }}</title>
-	<link rel="alternate" type="application/rss+xml" title="Блог Конфуция" href="http://feeds.feedburner.com/cmsbuilder"/>
+	<link rel="alternate" type="application/rss+xml" title="{{ site.en.title }}" href="http://feeds.feedburner.com/cmsbuilder"/>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" href="/t/common.css"/>
 </head>
@@ -13,15 +13,15 @@
 
 <div class="post">
 	<section>
-		<h class="title">{{ page.title }}</h>
-		<span class="date">{{ page.date | date: "%d.%m.%Y" }}</span>
-		<section class="content">
+		<h1 class="title">{{ page.title }}</h1>
+		<span class="date">{{ page.date | date: "%d %B %Y" }}</span>
+		<section class="content markdown">
 		{{ content }}
 		</section>
 	</section>
 	
 	<dl class="tags">
-		<dt class="head">Теги:</dt>
+		<dt class="head">Tags:</dt>
 		<dd class="body">
 			<ul class="list">
 			{% for tag in page.categories %}
@@ -31,7 +31,7 @@
 		</dd>
 	</dl>
 	
-	<div class="comments">Очень жду ваших комментариев <a href="mailto:Комментарии блога Конфуция <{{ site.en.author.email }}>?subject=Re: {{ page.title }}">на почту</a> или <a href="https://github.com/kung-fu-tzu/kung-fu-tzu.github.com/issues">на гитхаб</a>.</div>
+	<div class="comments">Can't wait your comments at <a href="mailto:Comment for {{ site.en.title }} <{{ site.en.author.email }}>?subject=Re: {{ page.title }}">email</a> or <a href="https://github.com/kung-fu-tzu/kung-fu-tzu.github.com/issues">at github</a>.</div>
 </div>
 
 </div>
