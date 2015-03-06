@@ -2,16 +2,7 @@ safe: true
 lsi: false
 pygments: true
 permalink: /posts/:year/:month/:day/:title
-url: "http://kung-fu-tzu.ru"
-
-ru:
-  title: "Блог Конфуция"
-  author:
-    name: Петр Леонов
-    email: comments@kung-fu-tzu.ru
-
-en:
-  title: "Confucius Blog"
-  author:
-    name: Peter Leonov
-    email: comments@kung-fu-tzu.ru
+url: "http://leonov.net"
+title: "Peter Leonov's Blog"
+author:
+  name: Peter Leonov
