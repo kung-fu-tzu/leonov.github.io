@@ -6,7 +6,7 @@ layout: post
 lang: en
 ---
 
-Starting with Ubuntu 12.04 it is quite simple to create Linux Containers (aka LXC). As an OpenVZ fan and virtualization lover in general I've watching for LXC to come to life for a couple of years. Finally, the Containers become ready to use out of the box.
+Starting with Ubuntu 12.04 it is quite simple to create Linux Containers (aka LXC). As an OpenVZ fan and virtualization lover in general I've been watching for LXC to come to life for a couple of years. Finally, the Containers become ready to use out of the box.
 
 *BTW, Solaris and FreeBSD had this for ever.*
 
@@ -21,7 +21,7 @@ With simplicity in mind all this hardcore administration stuff looks like an ove
 Linode
 ------
 
-First of all creating a linode is simple. And fast. And ping is low. And all.
+First of all, creating a linode server is simple. And fast. And ping is low. And all.
 
 And they have a cheap and automated backup. And cloning. And debugging. And console. And all.
 
@@ -31,7 +31,7 @@ And you can install vanilla (with xen support) kernel in a linode. So…
 LXC
 ---
 
-On an ordinary ubuntu box the LXC are `apt-get` away, and two `apt-get`s away on a linode. The extra work is just an installation of the [virtual kernel](http://packages.ubuntu.com/precise/linux-virtual). Lets go install and boot it.
+On an ordinary ubuntu box the LXC are `apt-get` away, and just two `apt-get`s away on a linode box. The extra work is just an installation of the [virtual kernel](http://packages.ubuntu.com/precise/linux-virtual). Lets go install and boot it.
 
 
 Virtual kernel
