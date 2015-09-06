@@ -74,7 +74,7 @@ And then:
 
 	sudo update-grub-legacy-ec2
 
-OK, system is ready to be booted with a new kernel. Finish with asking linode to use PV-GRUB:
+OK, system is ready to be booted with a new kernel. Finish by asking linode to use PV-GRUB:
 
 > Enter Linode Configuration Profile in your Linode Manager. Change Kernel to pv-grub-x86_32 or pv-grub-x86_64, depending on installed kernel and userspace.
 
@@ -146,3 +146,4 @@ Now you may reboot and enter the container:
 That's all for now. To fine tune container please read through the [LXC manual](https://help.ubuntu.com/12.04/serverguide/lxc.html).
 
 Have fun!
+
