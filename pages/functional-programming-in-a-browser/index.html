@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#" xmlns:og="http://opengraphprotocol.org/schema/">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+  <link href="//cloud.webtype.com/css/34a9dbc8-2766-4967-a61f-35675306f239.css" rel="stylesheet" type="text/css" />
+  <link href='talk.css' rel='stylesheet' type='text/css' />
+
+  <title>FP in the Browser – 2</title>
+
+  <meta name="author" content="Nikita Prokopov" />
+  
+  <meta property="og:title" content="ФП в браузере-2" />
+  <meta property="og:url" content="http://tonsky.me/talks/2015-frontendconf/index.html" />
+  <meta property="og:type" content="article" />
+
+  <meta property="article:published_time" content='' />
+
+  <meta property="og:site_name" content="tonsky.me" />
+  <meta property="article:author" content="https://www.facebook.com/nikitonsky" />
+  <meta property="profile:first_name" content="Nikita" />
+  <meta property="profile:last_name" content="Prokopov" />
+  <meta property="profile:username" content="tonsky" />
+  <meta property="profile:gender" content="male" />
+
+  <meta name="twitter:creator" content="@nikitonsky" />
+
+</head>
+<body>
+
+<ul class=menu>
+  <li><a class="menu__item" href="http://tonsky.me/">Blog</a>
+  <li><a class="menu__item menu__item_inside" href="http://tonsky.me/talks/">Talks</a>
+  <li><a class="menu__item" href="http://tonsky.me/about/">About</a>
+</ul>
+
+<div class=page>
+<p><img class="slide" src="slides/0000 title.png" /></p>
+
+<p>This post touches the topic of how functional programming approach helps us coders reduce the UI programming struggles.</p>
+
+<p><img class="slide" src="slides/0005 platforms.png" /></p>
+
+<p>There is no much differrence in a process of developing interfaces for different platforms and it is a question of a quantity then a quality. Same promlems, same solutions, free of extremums of even noticeble fluctuations. That's why the word “browser” in the title should not distract you: we are going to talk about architecture usable on any interfaces.</p>
+
+<p><img class="slide" src="slides/0010 eshop.png" /></p>
+
+<p>What we whant is to learn how to build complex interfaces, such as there are more than one story line happening on the screen. The traditional approach — spend a lot of time and get tired — works now, but asks for a better life.</p>
+
+<p>The common OOP approach (or generally speaking “divide in components and conquere”) works in the real life for trivial cases only. A component, if put in a complex context, starts to depend on things external to the local model, such as an other component state and a history of interactions.</p>
+
+<p><img class="slide" src="slides/0015 context.png" /></p>
+
+<p>The closer an interface comes to a real appropriate thing the more intertwined the many-to-many relations become. The actual complexity is been accumulated in the information management, in the gigantic heap of behaviour and influence nuances.</p>
+
+<p><img class="slide" src="slides/0020 eshop-deps.png" /></p>
+
+<p>Of course, one does not simply fix the web with a single post, but we may prescribe web a vitaminize diet which is the functional programming, the ancestral wisdom.</p>
+
+<p><img class="slide" src="slides/0040 functional-programming.png" /></p>
+
+<p>The “functional programmig” itself is (as any ultra modern trend) a pretty general and blury term. That is for a purpose of a holly war made easy on the Internets. But the actual functional tricks are very focused and fairly useful.</p>
+
+<p><img class="slide" src="slides/0050 pure-functions.png" /></p>
+
+<p>Pure you may call a function which evaluates without any observable side effect such as console output, application state change, network requests. Usually, the pureness is declared at a conventional level, but Haskell happens too. This kind of functions is safe to call in any way, anywhere, any number of times.</p>
+
+<p>Adjacent term is a “referential transparency”. Functions of this class does not depend on a global state but on their arguments only. The result of such a function is safe to cache.</p>
+
+<p>Pure referentially transparent functions make a code simplier to read (graphically, where the data comes from and where it goes) and unit test (no need to set up an environment).</p>
+
+<p>Functional programmers did notice that the most part of an application code could be easily express with pure referentially transparent functions. The imperative programming still remains handy on a level of library algorithms. Unpure functions go outside of a core and become highy localized, which simplifies the effects tracking.</p>
+
+<p><img class="slide" src="slides/0055 code-vs-data.png" /></p>
+
+<p>We all have been trained by OOP to store data and code together, but only few ask theirselves if it isn't a sin. As a matter of fact programs are all about data: they take something (seven) and transform to something else (fourty-two).</p>
+
+<p>It is extremely handy to have the data open and universally available, one can use them in any different way, not exclusively the way author thought of. The programm may not even has been run, but data is still there available.</p>
+
+<p><img class="slide" src="slides/0060 immutability.png" /></p>
+
+<p>Immutability is widely know thanks to strings. Once a string is created it could not be modified in future. But a new one is allowed to be created with, say, concatination. The old one is intact and still available as is (exception for C/C++, these guys love it the hard way).</p>
+
+<p>The same approach is appliable to collections: lists, symbol tables, sets, structures. Adding a new element does not push to an immutable list, but creates a new list with one element more.</p>
+
+<p>It is reasonable that immutable structures are more expensive in use, but not lethaly. Good inmpementations (persistent data structures) reuse the “previouse” state parts in a way the overall expence tends to be low:</p>
+
+<p><img class="slide" src="slides/0070 structural-sharing.png" /></p>
+
+<p>Immutability rules in a multithreaded environment and so it does in a singlethreaded one too. It wastly simplifies reading of the code (easier to track an evolution of entities, all modifications are clearly visible) and protects from a whole class of errors like “made a change, got entangled, have forgotten”.</p>
+
+<p><img class="slide" src="slides/0080 lazyness.png" /></p>
+
+<p>Lazyness is a technique to postpone a calculation till it is actually needed. Instead of the immideate answer the function may return a recipe getting the answer in hope that the caller will address the issue itself. Used mostly for calculations optimisation.</p>
+
+<p><img class="slide" src="slides/0090 webapps.png" /></p>
+
+<p>Let's now take a look at how to apply all of the things spoken to the initial target: web interfaces.</p>
+
+<p>A traditional web interface is a single huge, complex, globaly mutable DOM tree:</p>
+
+<p><img class="slide" src="slides/0100 dom.png" /></p>
+
+<p>While it looks like the application is working properly it actually does change this tree uncontrollably from all possible directions:</p>
+
+<p><img class="slide" src="slides/0105 dom-state.png" /></p>
+
+<p>That is how a functional programmer's nightmare might look like: death-damp, soul-chilling terror, midnight cry, <code>element.appendChild()</code>.</p>
+
+<p>Suspect we have got the DOM tree immutable and not global. Suspect the DOM tree is just an immutable value. With that suspected our application turns into a pure function transforming one DOM tree to another:</p>
+
+<p><img class="slide" src="slides/0110 doms.png" /></p>
+
+<p>So far so good: that is ready for unit testing. To test if a panel hides when clicked it's enought to just create DOM three with the panel, pass the dom to our function, and then check if the returned DOM is lacking the panel. No need for booting up a browser and then clicking the application to get the proper state, just run a googol of threads and test.</p>
+
+<p>Now it is the complexity time. For N states of a DOM tree we need to write N² functions transitioning each state in each other state. Adding one new state requires N more functions translating to the new state, plus N more translating from the new state. In reality the web will be less dense, but the complexity function still is not linear:</p>
+
+<p><img class="slide" src="slides/0120 dom-mess.png" /></p>
+
+<p>In real life that hardly happens, but happens in programming: model to the resque. We can reduce our application to a function which translates model to a DOM tree:</p>
+
+<p><img class="slide" src="slides/0124 dom-model.png" /></p>
+
+<p>Different models give different trees:</p>
+
+<p><img class="slide" src="slides/0127 doms-models.png" /></p>
+
+<p>All the logic happens on a level of transitions between the model states. The actual DOM tree transitions should be offloaded to a library:</p>
+
+<p><img class="slide" src="slides/0130 model-model-dom-dom.png" /></p>
+
+<p>This puts on some structure and sensitively reduces the amount of code working with DOM: from N² to N:</p>
+
+<p><img class="slide" src="slides/0135 model-model-mess.png" /></p>
+
+<p>Attentive reader could notice that we have the problem reduced from DOM transitions to model state transitions. This is correct. And also correct is a reduction of the number of arrown on the picture. Swindled we feel.</p>
+
+<p>In practice the model gets assembled much simplier and logically compared to the corresponding DOM tree. Model consists consists of less details, state transitions are trivial, no corner cases to concentrate on. That is, the picture stuctually looks as having more details, but in practice it makes the code simplier.</p>
+
+<p>Until now we were taliking about widely know things. React works roughly like this and other virtual DOM based frameworks. Still it is enought for a functional programming to blossom out: immutable DOM (actually, once-only – it is trashed instantly after been generated, which makes it effectively immutable), the rendering function if pure (React requires a freedom to decide whre, when and how many times to call the function), and no global state been used.</p>
+
+<p>And this is just a beginning. Lets push to the limits and declare the model immutable too:</p>
+
+<p><img class="slide" src="slides/0140 immutable-model.png" /></p>
+
+<p>Now the application logic could me expessed as a pure function: any state transition takes an old model and based on it generates a new one.</p>
+
+<p>Immutable model gives a key to a lazy rendering. Immutable structure cannot be silently changed deep inside: it requires an in depth search, then a change, and then a careful repacking of everuthing back. That's why it is instant to check if a model is dirty: just compare the references.</p>
+
+<p><img class="slide" src="slides/0150 lazy-dom.png" /></p>
+
+<p>Since a model is rarely changed etirely and an application components depend on different parts of the model it is easy to calculate which parts should be re-rendered and which remain as they were. In React this optimization (shouldComponentUpdate) is disabled by default and should be enabled manualy at your own risk. For immutable arguments it is safe to enabled it everywhere. This way the actual rendering becomes lazy: the interesting parts only would be calculated while the rest remains untouched as a calculation recipe.</p>
+
+<p>The second bonus the immutable model grants is conservation of history. Old models references remains valid and been saved in a list could be played back and forth in history.</p>
+
+<p><img class="slide" src="slides/0153 model-history.png" /></p>
+
+<p>Lets take an overview of a whole architecture:</p>
+
+<p><img class="slide" src="slides/0156 architecture.png" /></p>
+
+<p>An application consists of a single current model, stack of model history and a rendering function translating the model to a DOM. As far as rendering function doesn't care where the model comes from it is easy to make a preview of previouse history states and an undo by Ctrl+Z.</p>
+
+<p>Even further, since the rendering function is indeed neutral to the source of the model it is possible to amend the architecture with a speculative model: all the previews, in-progress operations, uncommited settings, etc could be rendered by just calculating how would the model look like in that case. A speculative model is never saved, is calculated on-the-fly and is sent the rendering function only once.</p>
+
+<p><img class="slide" src="slides/0158 speculative-model.png" /></p>
+
+<p>This video show a history stack (bottom left) with a preview of previouse states and undo functionality. Shapes not been finished yet are rendered via speculative model:</p>
+
+<video class="slide" controls=""><source src="slides/vec history.mp4" type="video/mp4" /></video>
+
+<p>The model history is just a pure date, which means we can make a data query on them.</p>
+
+<p><img class="slide" src="slides/0160 history-queries.png" /></p>
+
+<p><a href="http://atomic.io/">Atomic.io</a> is able to show a history of any particular object. Basicly, the framework builds an object history and merges the old versions into the currend model:</p>
+
+<video class="slide" controls=""><source src="slides/atomic selective history.mp4" type="video/mp4" /></video>
+
+<p>The beauty of a separate model shows itself in an elegant architecture separation into loosely coupled layers. Rendering knows nothing about client-server synchronisation, server knows nothing about client-side caching, and so on. A model could be run on the server side separetely from a render. All of the parts a deeply indifferent to the source of a model and who is aslo observing it. This is a quality worth fighting for.</p>
+
+<p><img class="slide" src="slides/0164 decoupling.png" /></p>
+
+<p>Another example of an immutable model usefulness: concurent editing of a shared document. This kind of architecture uses Event Sourcing: a model is a result of folding all the previouse events happened to it (which is a functional programming concept too):</p>
+
+<p><img class="slide" src="slides/0167 architectures.png" /></p>
+
+<p>We store two event logs: local one and second one approved by a server. All the local events first hit the local log. Based on the local log the local model is calculated and then gets rendered. It delivers an instant feedback and an offline work.</p>
+
+<p>Behind the scenes, independantly and in parallel, local log tries to syncronize itself with a server log. Once events from the local log get approved by the server the local log gets cleared and all the approved events get applied to an approved model. This guaranties identical logs on all clients. Client gets automatically notified about the eventes from other clients: server just pushes them to an approved log immediatly.</p>
+
+<p>This architecture requires a model snapshots to be sored and used to re-calculate the most recent state without breaking anything.</p>
+
+<p>Even more crazy thing: time traveling debugging:</p>
+
+<p><img class="slide" src="slides/0170 time-travel.png" /></p>
+
+<p>This is also is a way an event sourcing but with events been recorded on a very low level — all the external sources: user input, timers, network — and only then hit the application code.</p>
+
+<p>Such a separation to a (highly pure) data and a code allows to serialize the application session, then send it for recreating the same session elsewhere. What more important is that the code might be changed and then run to see how the same session behaves with this new code. The example <a href="http://debug.elm-lang.org/edit/Stamps.elm">based on the Elm platform</a>:</p>
+
+<video class="slide" controls=""><source src="slides/elm debugger.mp4" type="video/mp4" /></video>
+
+<p>This concept requires a seriouse discipline (or a technology providing it), but on the other hand in grants innorouse benefits for everyday applications. It is also useful in application support: got a bug report with an event log, fixed the bug, played back the evens to enshure bug is gone, then enjoy a bug free evening.</p>
+
+<p>Thus we want it. And we want it now. How to?</p>
+
+<p><img class="slide" src="slides/0180 ingridients.png" /></p>
+
+<p>The must have are: a virtual DOM implementation (react.js, virtual-dom/mercury) and an immutable structures library (mori.js, immutable.js).</p>
+
+<p>To specially mention I would like ClojureScript: it a mature LISP dialect compilable to JavaScript. It's functional with immutable data structures by default, what's why it is so pleasureable to build such things. The most part of the ideas described here took start in its very ecosystem from where has been pilfered by imitators.</p>
+
+<p><img class="slide" src="slides/0190 clojurescript.png" /></p>
+
+<p>Also, the Elm platform was mentioned: it is yet an experimental project which aims to guarantee strictness and pureness providing most of the thins we talked about for free.</p>
+
+<p><img class="slide" src="slides/0200 elm.png" /></p>
+
+<p>Few examples of projects built upon the described architectures:</p>
+
+<p><img class="slide" src="slides/0210 examples.png" /></p>
+
+<p>Examples from absolutely different fields: starting from an ordinary web-site with a page/links interface (<a href="http://getprismatic.com">Prismatic</a>: ClojureScript, Om), through of a middle complexity interface Continous Integration (<a href="http://circleci.com">CircleCI</a>: ClojureScript, Om) to a prototyping platform (<a href="http://precursorapp.com">Precursor</a>: ClojureScript, Om, DataScript) and a web-based graphical editor (<a href="http://atomic.io/">Atomic</a>: JS, React, Immutable.js).</p>
+
+<p>Functional programming has already came to mainstreem and proven doing well. A virtual DOM and immutable structures seemingly are the common things waiting for us in the near future in all interfaces: from a bankmate to a kettle. I would recommend to stop waiting until W3C approves the Virtual DOM specification for browser vendors but jump into this train right now.</p>
+
+<p>See also: <a href="http://swannodette.github.io/2013/12/17/the-future-of-javascript-mvcs/">The Future of JavaScript MVC Frameworks</a></p>
+
+<p><a href="http://tonsky.me/"><img class="slide" src="slides/0220 fin.png" /></a></p>
+
+
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-5928238-7', 'tonsky.me');
+  ga('send', 'pageview');
+
+</script>
