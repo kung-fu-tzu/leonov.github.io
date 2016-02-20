@@ -76,7 +76,7 @@
 
 <p><img class="slide" src="slides/0060 immutability.png" /></p>
 
-<p>Immutability is widely know thanks to strings. Once a string is created it could not be modified in future. But a new one is allowed to be created with, say, concatenation. The old one is intact and still available as is (exception for C/C++, these guys love it the hard way).</p>
+<p>Immutability is widely know thanks to strings. Once a string is created it could not be modified in future. But a new one is allowed to be created with, say, a concatenation. The old one remains intact and available as it is (with exception for C/C++, these guys like it the hard way).</p>
 
 <p>The same approach is applicable to collections: lists, symbol tables, sets, structures. Adding a new element does not push to an immutable list, but creates a new list with one element more.</p>
 
@@ -84,11 +84,11 @@
 
 <p><img class="slide" src="slides/0070 structural-sharing.png" /></p>
 
-<p>Immutability rules in a multithreaded environment and so it does in a single threaded one too. It vastly simplifies reading of the code (easier to track an evolution of entities, all modifications are clearly visible) and protects from a whole class of errors like “made a change, got entangled, have forgotten”.</p>
+<p>Immutability does rule in a multithreaded environment and so it does in a single threaded one too. It vastly simplifies reading of a code (easier to track an evolution of entities, all modifications are clearly visible) and protects from a whole class of errors like “made a change, got entangled, have forgotten”.</p>
 
 <p><img class="slide" src="slides/0080 lazyness.png" /></p>
 
-<p>Laziness is a technique to postpone a calculation till it is actually needed. Instead of the immediate answer the function may return a recipe getting the answer in hope that the caller will address the issue itself. Used mostly for calculations optimisation.</p>
+<p>Laziness is a technique to postpone a calculation till it is actually needed. Instead of the immediate answer the function may return a recipe for getting the answer in hope that the caller will address the issue itself. Used mostly for calculations optimisation.</p>
 
 <p><img class="slide" src="slides/0090 webapps.png" /></p>
 
@@ -98,23 +98,23 @@
 
 <p><img class="slide" src="slides/0100 dom.png" /></p>
 
-<p>While it looks like the application is working properly it actually does change this tree uncontrollably from all possible directions:</p>
+<p>While it looks like an application is working properly it actually does change it's tree uncontrollably from all possible directions:</p>
 
 <p><img class="slide" src="slides/0105 dom-state.png" /></p>
 
 <p>That is how a functional programmer's nightmare might look like: death-damp, soul-chilling terror, midnight cry, <code>element.appendChild()</code>.</p>
 
-<p>Suspect we have got the DOM tree immutable and not global. Suspect the DOM tree is just an immutable value. With that suspected our application turns into a pure function transforming one DOM tree to another:</p>
+<p>Suspect we have got a DOM tree immutable and not global. Suspect the DOM tree is just an immutable value. With that suspected our application turns into a pure function transforming one DOM tree to another:</p>
 
 <p><img class="slide" src="slides/0110 doms.png" /></p>
 
-<p>So far so good: that is ready for unit testing. To test if a panel hides when clicked it's enough to just create DOM three with the panel, pass the DOM to our function, and then check if the returned DOM is lacking the panel. No need for booting up a browser and then clicking the application to get the proper state, just run a googol of threads and test.</p>
+<p>So far so good: the application is ready for unit testing then. To test if a panel hides when clicked it's enough to just create DOM three with the panel, pass the DOM to our function, and then check if the returned DOM is lacking the panel. No need for booting up a browser and then clicking the application to get the proper state, just run a googol of threads and test.</p>
 
-<p>Now it is the complexity time. For N states of a DOM tree we need to write N² functions transitioning each state in each other state. Adding one new state requires N more functions translating to the new state, plus N more translating from the new state. In reality the web will be less dense, but the complexity function still is not linear:</p>
+<p>Now it is the complexity time. For N states of a DOM tree we need to write N² functions transitioning each state in each other state. Adding one new state requires N more functions translating to the new state, plus N more translating from the new state. In reality the web on the picture will be less dense, but the complexity function still is not linear:</p>
 
 <p><img class="slide" src="slides/0120 dom-mess.png" /></p>
 
-<p>In real life that hardly happens, but happens in programming: model to the rescue. We can reduce our application to a function which translates model to a DOM tree:</p>
+<p>In real life that hardly happens, but happens in programming – model to the rescue. We can reduce our application to a function which translates model to a DOM tree:</p>
 
 <p><img class="slide" src="slides/0124 dom-model.png" /></p>
 
@@ -132,11 +132,13 @@
 
 <p>Attentive reader could notice that we have the problem reduced from DOM transitions to model state transitions. This is correct. And also correct is a reduction of the number of arrows on the picture. Swindled we feel.</p>
 
-<p>In practice the model gets assembled much simpler and logically compared to the corresponding DOM tree. Model consists consists of less details, state transitions are trivial, no corner cases to concentrate on. That is, the picture structurally looks as having more details, but in practice it makes the code simpler.</p>
+<p>In practice the model gets assembled much simpler and logically compared to the corresponding DOM tree. Model consists of less details, state transitions are trivial, no corner cases to concentrate on. That is, the picture structurally looks as having more details, but in practice it makes the code simpler.</p>
 
-<p>Until now we were talking about widely know things. React works roughly like this and other virtual DOM based frameworks. Still it is enough for a functional programming to blossom out: immutable DOM (actually, once-only – it is trashed instantly after been generated, which makes it effectively immutable), the rendering function if pure (React requires a freedom to decide where, when and how many times to call the function), and no global state been used.</p>
+<p>Until now we were talking about widely know things. React and other virtual DOM based frameworks work roughly like this. Still, it is enough for a functional programming to blossom out: immutable DOM (actually, once-only – it is trashed instantly after been generated, which makes it effectively immutable), the rendering function if pure (React requires a freedom to decide where, when and how many times to call the function), and no global state been used.</p>
 
 <p>And this is just a beginning. Lets push to the limits and declare the model immutable too:</p>
+
+<!-- bookmark -->
 
 <p><img class="slide" src="slides/0140 immutable-model.png" /></p>
 
