@@ -142,15 +142,15 @@
 
 <p><img class="slide" src="slides/0140 immutable-model.png" /></p>
 
-<p>Now the application logic could me expressed as a pure function: any state transition takes an old model and based on it generates a new one.</p>
+<p>Now the application logic could be expressed as a pure function: any state transition takes an old model and based on it generates a new one.</p>
 
-<p>Immutable model gives a key to a lazy rendering. Immutable structure cannot be silently changed deep inside: it requires an in depth search, then a change, and then a careful repacking of everything back. That's why it is instant to check if a model is dirty: just compare the references.</p>
+<p>Immutable model gives a key to a lazy rendering. Immutable structure cannot be silently changed deep inside: it requires an in depth search, then a change, and then a careful repacking of everything back. That's why it is instantly fast to check if a model is dirty: just compare the references.</p>
 
 <p><img class="slide" src="slides/0150 lazy-dom.png" /></p>
 
-<p>Since a model is rarely changed entirely and an application components depend on different parts of the model it is easy to calculate which parts should be re-rendered and which remain as they were. In React this optimisation (shouldComponentUpdate) is disabled by default and should be enabled manually at your own risk. For immutable arguments it is safe to enabled it everywhere. This way the actual rendering becomes lazy: the interesting parts only would be calculated while the rest remains untouched as a calculation recipe.</p>
+<p>Since a model is rarely changed entirely and an application components depend on different parts of the model it is easy to calculate which parts should be re-rendered and which remain as they were. In React this optimisation (shouldComponentUpdate) is disabled by default and should be enabled manually at your own risk. For immutable arguments it is safe to enabled it everywhere. This way the actual rendering becomes lazy: the interesting parts only would be calculated while the rest parts remain untouched as a calculation recipe.</p>
 
-<p>The second bonus the immutable model grants is conservation of history. Old models references remains valid and been saved in a list could be played back and forth in history.</p>
+<p>As a bonus the immutable model grants a conservation of history. Old model references remain valid, and been saved in a list could be played back and forth in history.</p>
 
 <p><img class="slide" src="slides/0153 model-history.png" /></p>
 
@@ -158,13 +158,13 @@
 
 <p><img class="slide" src="slides/0156 architecture.png" /></p>
 
-<p>An application consists of a single current model, stack of model history and a rendering function translating the model to a DOM. As far as rendering function doesn't care where the model comes from it is easy to make a preview of previous history states and an undo by Ctrl+Z.</p>
+<p>An application consists of a single current model, stack of model history and a rendering function translating the model to a DOM. As far as rendering function doesn't care where the model comes from it is easy to make a preview of previous history states and implement an undo by Ctrl+Z.</p>
 
-<p>Even further, since the rendering function is indeed neutral to the source of the model it is possible to amend the architecture with a speculative model: all the previews, in-progress operations, uncommitted settings, etc could be rendered by just calculating how would the model look like in that case. A speculative model is never saved, is calculated on-the-fly and is sent the rendering function only once.</p>
+<p>Even further, since the rendering function is indeed neutral to the source of a model it is possible to amend the architecture with a speculative model: all the previews, in-progress operations, uncommitted settings, etc. could be rendered by just calculating how would the model look like in that case. A speculative model is never saved, it is calculated on-the-fly and is sent to the rendering function only once.</p>
 
 <p><img class="slide" src="slides/0158 speculative-model.png" /></p>
 
-<p>This video show a history stack (bottom left) with a preview of previous states and undo functionality. Shapes not been finished yet are rendered via speculative model:</p>
+<p>This video shows a history stack (at bottom left) with a preview of previous states and undo functionality. Shapes have not been finished yet are rendered via speculative model:</p>
 
 <video class="slide" controls=""><source src="slides/vec history.mp4" type="video/mp4" /></video>
 
@@ -180,13 +180,13 @@
 
 <p><img class="slide" src="slides/0164 decoupling.png" /></p>
 
-<p>Another example of an immutable model usefulness: concurrent editing of a shared document. This kind of architecture uses Event Sourcing: a model is a result of folding all the previous events happened to it (which is a functional programming concept too):</p>
+<p>Another example of an immutable model usefulness: concurrent editing of a shared document. This kind of architecture uses Event Sourcing: a model is a result of folding of all the previous events had happened to it (which is a functional programming concept too):</p>
 
 <p><img class="slide" src="slides/0167 architectures.png" /></p>
 
 <p>We store two event logs: local one and second one approved by a server. All the local events first hit the local log. Based on the local log the local model is calculated and then gets rendered. It delivers an instant feedback and an offline work.</p>
 
-<p>Behind the scenes, independently and in parallel, local log tries to synchronise itself with a server log. Once events from the local log get approved by the server the local log gets cleared and all the approved events get applied to an approved model. This guaranties identical logs on all clients. Client gets automatically notified about the events from other clients: server just pushes them to an approved log immediately.</p>
+<p>Behind the scenes – independently and in parallel – local log tries to synchronise itself with the server log. Once events from the local log get approved by the server the local log gets cleared and all the approved events get applied to an approved model. This guaranties identical logs on all clients. Client gets automatically notified about the events from other clients: server just pushes them to an approved log immediately.</p>
 
 <p>This architecture requires a model snapshots to be stored and used to re-calculate the most recent state without breaking anything.</p>
 
@@ -194,13 +194,13 @@
 
 <p><img class="slide" src="slides/0170 time-travel.png" /></p>
 
-<p>This is also is a way an event sourcing but with events been recorded on a very low level — all the external sources: user input, timers, network — and only then hit the application code.</p>
+<p>This is also is a way of event sourcing but with events been recorded on a very low level (all the external sources: user input, timers, network) and only then hit the application code.</p>
 
 <p>Such a separation to a (highly pure) data and a code allows to serialise the application session, then send it for recreating the same session elsewhere. What more important is that the code might be changed and then run to see how the same session behaves with this new code. The example <a href="http://debug.elm-lang.org/edit/Stamps.elm">based on the Elm platform</a>:</p>
 
 <video class="slide" controls=""><source src="slides/elm debugger.mp4" type="video/mp4" /></video>
 
-<p>This concept requires a serious discipline (or a technology providing it), but on the other hand in grants enormous benefits for everyday applications. It is also useful in application support: got a bug report with an event log, fixed the bug, played back the evens to ensure bug is gone, then enjoy a bug free evening.</p>
+<p>This concept requires a serious discipline (or a technology providing it), but on the other hand it grants enormous benefits for everyday applications. It is also useful in application support: got a bug report with an event log, fixed the bug, played back the evens to ensure bug is gone, and then enjoy a bug free evening.</p>
 
 <p>Thus we want it. And we want it now. How to?</p>
 
@@ -208,11 +208,11 @@
 
 <p>The must have are: a virtual DOM implementation (react.js, virtual-dom/mercury) and an immutable structures library (mori.js, immutable.js).</p>
 
-<p>To specially mention I would like ClojureScript: it a mature LISP dialect compilable to JavaScript. It's functional with immutable data structures by default, what's why it is so pleasurable to build such things. The most part of the ideas described here took start in its very ecosystem from where has been pilfered by imitators.</p>
+<p>To specially mention I would like ClojureScript: it is a mature LISP dialect compilable to JavaScript. It is functional with immutable data structures by default, what's why it is so pleasurable to build such things using it. The most part of the ideas described here took start in its very ecosystem from where has been pilfered by imitators.</p>
 
 <p><img class="slide" src="slides/0190 clojurescript.png" /></p>
 
-<p>Also, the Elm platform was mentioned: it is yet an experimental project which aims to guarantee strictness and pureness providing most of the thins we talked about for free.</p>
+<p>Also, the Elm platform was mentioned: it is yet an experimental project which aims to guarantee strictness and pureness providing most of the things we talked about, for free.</p>
 
 <p><img class="slide" src="slides/0200 elm.png" /></p>
 
@@ -220,9 +220,9 @@
 
 <p><img class="slide" src="slides/0210 examples.png" /></p>
 
-<p>Examples from absolutely different fields: starting from an ordinary web-site with a page/links interface (<a href="http://getprismatic.com">Prismatic</a>: ClojureScript, Om), through of a middle complexity interface Continuous Integration (<a href="http://circleci.com">CircleCI</a>: ClojureScript, Om) to a prototyping platform (<a href="http://precursorapp.com">Precursor</a>: ClojureScript, Om, DataScript) and a web-based graphical editor (<a href="http://atomic.io/">Atomic</a>: JS, React, Immutable.js).</p>
+<p>Examples from absolutely different fields: starting from an ordinary web-site with a page/links interface (<a href="http://getprismatic.com">Prismatic</a>: ClojureScript, Om), through a middle complexity interface Continuous Integration (<a href="http://circleci.com">CircleCI</a>: ClojureScript, Om) to a prototyping platform (<a href="http://precursorapp.com">Precursor</a>: ClojureScript, Om, DataScript) and ending with a web-based graphical editor (<a href="http://atomic.io/">Atomic</a>: JS, React, Immutable.js).</p>
 
-<p>Functional programming has already came to mainstream and proven doing well. A virtual DOM and immutable structures seemingly are the common things waiting for us in the near future in all interfaces: from a cash machine to a kettle. I would recommend to stop waiting until W3C approves the Virtual DOM specification for browser vendors but jump into this train right now.</p>
+<p>Functional programming has already come to mainstream and proven doing well. A virtual DOM and immutable structures seemingly are the common things waiting for us in the near future in all interfaces: from a cash machine to a kettle. I would recommend to stop waiting until W3C approves the Virtual DOM specification for browser vendors but jump into this train right now.</p>
 
 <p>See also: <a href="http://swannodette.github.io/2013/12/17/the-future-of-javascript-mvcs/">The Future of JavaScript MVC Frameworks</a></p>
 
