@@ -3,7 +3,7 @@ layout: index
 ---
 <ul class="posts-list">
 {% for post in site.posts %}
-<li class="item"><a class="post-preview" href="{{ post.url }}/">
+<li class="item"><a class="post-preview" href="{{ post.url }}">
   <span class="title">{{ post.title }}</span>
   <span class="description">{{ post.description }}</span>
   <span class="date">{{ post.date | date: "%d.%m.%Y" }}</span>
