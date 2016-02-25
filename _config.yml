@@ -5,3 +5,8 @@ url: "http://leonov.net"
 title: "Peter Leonov's Blog"
 author:
   name: Peter Leonov
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
