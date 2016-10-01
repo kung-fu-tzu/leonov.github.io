@@ -1,7 +1,7 @@
 ---
 title: "Linux Containers (lxc) in Linode (xen)"
 description: "Virtualization squared."
-categories: [сервер, linux, vps, linode]
+categories: [backend, linux, vps, linode]
 layout: post
 lang: en
 ---

@@ -15,7 +15,7 @@ html { background: #eee; font-size: 22px; line-height: 33px; }
 
 code { font-family: 'Lucida Console', 'courier new', monospace; line-height: 1em; }
 
-.main-wrapper { max-width: 610px; margin: 25px auto; padding: 25px; border: 1px solid #aaa; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; background: #fff; }
+.main-wrapper { max-width: 750px; margin: 25px auto; padding: 25px; border: 1px solid #aaa; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; background: #fff; }
 
 .blog-name { display: block; text-align: center; padding: 15px; margin: -10px; margin-bottom: 15px; font-size: 20px; color: #fff; background: #5a2; border: 1px solid #680; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
 .blog-name:hover { text-decoration: none; }
