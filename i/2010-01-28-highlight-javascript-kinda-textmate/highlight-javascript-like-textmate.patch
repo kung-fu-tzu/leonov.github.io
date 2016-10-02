@@ -1,0 +1,137 @@
+# Bazaar merge directive format 2 (Bazaar 0.90)
+# revision_id: peter@pl.local-20100119060410-k38qj8cy7utkitlc
+# target_branch: http://softwaremaniacs.org/code/highlight/
+# testament_sha1: ea308ba0b757dec47cf562441d4d526d4034d55b
+# timestamp: 2010-01-19 09:04:31 +0300
+# base_revision_id: isagalaev@yandex-team.ru-20100114114451-\
+#   ym1o34416ouv5pzf
+# 
+# Begin patch
+=== modified file 'src/highlight.js'
+--- src/highlight.js	2009-08-26 13:27:24 +0000
++++ src/highlight.js	2010-01-19 06:04:10 +0000
+@@ -49,7 +49,7 @@
+ 
+     function endOfMode(mode_index, lexem) {
+       if (modes[mode_index].end && modes[mode_index].endRe.test(lexem))
+-        return 1;
++        return modes[mode_index].endsParent ? 2 : 1;
+       if (modes[mode_index].endsWithParent) {
+         var level = endOfMode(mode_index - 1, lexem);
+         return level ? level + 1 : 0;
+
+=== modified file 'src/styles/sunburst.css'
+--- src/styles/sunburst.css	2010-01-14 11:44:51 +0000
++++ src/styles/sunburst.css	2010-01-19 06:04:10 +0000
+@@ -5,7 +5,7 @@
+ */
+ 
+ pre code {
+-  font: 1em / 1.3em 'Lucida Console', 'courier new', monospace;
++  font: 1em / 1.3em 'Monaco', 'Lucida Console', 'courier new', monospace;
+   color: #f8f8f8;
+ }
+ 
+@@ -21,14 +21,16 @@
+ }
+ 
+ pre .keyword,
+-pre .ruby .function .keyword {
++pre .ruby .function .keyword,
++pre .operator {
+   color: #E28964;
+ }
+ 
+ pre .function .keyword,
+ pre .sub .keyword,
+ pre .method,
+-pre .list .title {
++pre .list .title,
++pre .storage {
+   color: #99CF50;
+ }
+ 
+@@ -43,6 +45,10 @@
+   color: #65B042;
+ }
+ 
++pre .string .escape {
++  color: #d3f2a4;
++}
++
+ pre .subst {
+   color: #DAEFA3;
+ }
+@@ -51,6 +57,10 @@
+   color: #E9C062;
+ }
+ 
++pre .regexp .escape {
++  color: #cf7d34;
++}
++
+ pre .function .title,
+ pre .sub .identifier,
+ pre .pi,
+@@ -70,7 +80,8 @@
+ }
+ 
+ pre .symbol,
+-pre .number {
++pre .number,
++pre .constant {
+   color: #3387CC;
+ }
+ 
+@@ -79,6 +90,24 @@
+   color: #3E87E3;
+ }
+ 
++pre .support {
++  color: #9b859d;
++}
++
++pre .support_function {
++  color: #dad085;
++}
++
++pre .support_constant {
++  color: #cf6a4c;
++}
++
++pre .method-entity,
++pre .property-entity,
++pre .entity {
++  color: #89bdff;
++}
++
+ pre .css .keyword,
+ pre .pseudo,
+ pre .tex .special {
+
+# Begin bundle
+IyBCYXphYXIgcmV2aXNpb24gYnVuZGxlIHY0CiMKQlpoOTFBWSZTWWWX6sgAAp9fgAQQWuf///sW
+TAq////6UAV4vVpQFGqRGqqkJRI0aTETam00GmkyNMI9RkAAGCDmmJkyaMJgmJpgEwCGCMCMAkhB
+TTJpMQ9JtNSaB6gNAA0aAD1DmmJkyaMJgmJpgEwCGCMCMAkkCZABJgEI9Cm02ppG1MjRoA00fitW
+vfxK4tEREdvrPwVwzprBMG+3ZlcIN9lclLNOmUVk09pk7OQ7vORm1i2KAOkVe1vlf8D7dn++8gX6
+s6TE4DAzJmCn1RSVvibHmo+odeWuDVkPi2O4dboZYWFXMjeH4HPO32fe5uopEeRf2/9upvYsJGKK
+qJmyyPq6thxPHLvR1uYjn7wHsLMTkSLpfWKN1t9+jVdEwl3gG8Cq0JUJuEisXZZwJMEHEIgaqzQp
+tYDEUvQMtbH3AwGAxdZcPBWMj1uQO5+gngu7AXT/DFwUApzfrQRbwESFD4RtOgJqomFJNovQzFuD
+nwEwOdzmBUC8Z+zaXXifmKyYUDJwFU8bId2az0sgGQfMYG6WRkVS3GAQ1P6qvl3VPmBrYe81SMDC
+e8GVo2G5C5KnJc+6lWalOthmpWVeQlBHxS34CganHEwFvI7LGhi/Hhc6FPYHKdUaU6ASK95weT1Q
+i1w+9oBEBgiFVo8rBg2U66gyI26EszjEknVtPMkWkuycscXWDAyyE0NAuqOsIjqh9RWMYlTDsC73
+BdSy3OAF6VcRziZF19zDGYsISBlZtsLahWRNNC0LyG20pJpYUm+Sa+8Ki+8WoCUxmGe7S8qMotw7
+MJ7BajOew+OWmOkx5MV/1Ao+pwFrmGAkWfMWe8rFAx2X8Wy120FbgLsFp4W6bzaKMYLXlcz0cI3u
+qODvRproFmRXM1Nkjjtx3fBY4zIBQd4D3cuZtnmLqQXdoarytMw30m/qSceeTeJPhF/lJTZtGFDp
+ANXEeKlvGIw8WO6Itx9uZV5dDF1mMt4eq8zDz4OZHBB7wsrC01y9oW+Y+REmvaTIkAu1lj963E4n
+TkkpNJiH9VImntE5noRsTuSm1ctp7ELU5MisTi0ztsGF4i0Mjyl+CD1FnrhhdWY5srYGLqEn2cXq
+98DUiLdoDPf5YcFyucuRTVEgtA/ZCsG31CqJ9gsT+pCxxaiL93guMC6WoS+Hv6zoUO15WKxxzvj3
++4YKY6zv7x8IcheHmWm7CxOwMa0ZyClkqdPNG1kL950NSn0pPHDl/GIMxmxHg3y48E715UDFmUvo
+2QdgNcCAyTGCoUOQp4SoZHZAIqMJUzOXGij6LJbTcaDqH7bErzrRW0uyiaFEyygNmuqUiMj4GtnA
+IMGaRW8oXDevBFroR0XiHajaKBr5IrupTl3b85VnUicA7kX/jcBVYymR+wHFatQDb35omBwA5oNw
+WIscEEa5AUOtzg+S3hfdPX6PQUFbcUCwOeMFmxoT0Z20813GCtVKmd0pmdUYmhwa0jF6gsHQRGAw
+5gHsFjlbl1e0MkGmRhqJJUS+Pgpo40NFl7Hd03iYWVaVW4JquunAI7L9eHQwwNC2FF+p4JiXP6IM
+A5B2iUdOHoHwA2d3ExxHAwmQML1Pyii8Sa2gjjov5lSzhqxxmoiVxCkqM1yHK79xmaCp5Dq+oIvV
+4eFxFDElU2zlbMVirp6k6hfRDdaMnUaeemxrGUlwTz6pkDhNS3NHKFdGtkGwOeTnz0uwNDLFbQK0
+FdMhRTNRgjZzcoRTB7m2+kpyThgwy618gHowC4L6JwqsOmcAVeEgY78wMgktoVt5ViEXIOoX/F3J
+FOFCQZZfqyA=
