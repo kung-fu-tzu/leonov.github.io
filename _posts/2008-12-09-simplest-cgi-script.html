@@ -1,0 +1,34 @@
+---
+title: "Simpliest CGI script"
+description: "C, Perl, Ruby, Python, JavaScript (SpiderMonkey)."
+categories: [backend, benchmark, C, cgi, javascript, perl, python, ruby, spidermonkey]
+layout: post
+time: 17:39:03
+---
+<p>Let's swith for a bit fron nginx internals. For fun not profit I want to compare how fast the modern script languages can run as CGI scripts. CGI is old, not hot, but very stable.</p>
+
+<p>Here a static file, compiled C, Perl, Ruby, Python and JavaScript (SpiderMonkey) have been compared. Surely the performance would not depend on the language itself but from its platform: creating pipe, setting environment variables, fork, then each interpreter does it's job of setting up classes and global variables, etc, and only then it parses the file and produces the desired output. For C most of it is not relevant so I use it as a reference.</p>
+
+<p>Here are rusults. For comparising a static file nginx serves 5201.02 times per second and JS built in nginx responses up to 15,000 times per second:
+<ul>
+<li>С: 600,07;</li>
+<li>Perl: 419,53;</li>
+<li>Ruby: 271,65;</li>
+<li>Python: 32,45;</li>
+<li>JavaScript: 403,00.</li>
+</ul></p>
+
+<p>It's obvious that I do not know how to prepare Python right. In other cases everything shows that prefork would definitely be needed.</p>
+
+<p>Tested on: Intel Core 2 Duo, 2.16 GHz, 4 Mb L2, 2 Gb memory.
+Mac OS X 10.5.5 (9F33), Darwin 9.5.0.</p>
+
+<p>Versions:
+<ul>
+<li>JavaScript-C 1.7.0 2007-10-03</li>
+<li>ruby 1.8.6 (2007-03-13 patchlevel 0) [i686-darwin8.9.1]</li>
+<li>python 2.5.2</li>
+<li>perl 5.8.8 (darwin-2level)</li>
+<li>gcc version 4.0.1 (Apple Inc. build 5488)</li>
+</ul>
+</p>
