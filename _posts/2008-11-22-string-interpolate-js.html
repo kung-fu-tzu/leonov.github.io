@@ -1,0 +1,43 @@
+---
+title: "String.interpolateJS()"
+description: "Простейший шаблонизатор с кешированием."
+categories: [клиент, eval, interpolate, javascript, parsing, string, with]
+layout: post
+time: 23:13:22
+---
+<p>This helps putting a bit of JS into a plain old string. A very handy feature for all kind of language packs. Beware: no limits for JS, no sandboxind.</p>
+
+<pre><code class="javascript">
+"Welcome to ${company}!".interpolateJS({company:'Programica'})
+//=> "Welcome to Programica!"
+
+"Your name is ${name}.".interpolateJS({name:prompt('What is your name?')})
+//=> "Your name is Dima."
+
+// tru javascript inside :)
+"Your name is ${prompt('What is your name?')}.".interpolateJS({})
+//=> "Your name is Dima."
+
+"${this.interpolateJS({})}".interpolateJS({})
+// too much recursion
+
+("${another = 'another', 'Just'} ${another}"+
+    " ${'tpircSavaJ'.split('').reverse().join('')}"+
+    " ${[\"hacker\"] || '{{}}'},").interpolateJS({another:1})
+//=> "Just another JavaScript hacker,"
+</code></pre>
+
+<p>Full compilation is done only once per sting as the resulting function gets cached. This is why the first call to <code>interpolateJS()</code> would be slower then next.</p>
+
+<p>If you need the cached function by a sting use the <code>String.prototype.interpolateJS.cache</code> object:
+<pre><code class="javascript">
+var string = "${x} + 2 = ${ x + 2 } :)"
+string.interpolateJS({x:2})
+//=> "2 + 2 = 4 :)"
+
+String.prototype.interpolateJS.cache[string]
+//=> function ($_$h) { with ($_$h) { return x + $_$s[1] + (x + 2) + $_$s[2]; } }
+</code></pre>
+</p>
+
+<p>Source code <a href="https://github.com/peter-leonov/liby/blob/bc6dbc1d00697a398d41c7957485d7397c9da3d4/src/modules/interpolate.js">in liby</a>.</p>
