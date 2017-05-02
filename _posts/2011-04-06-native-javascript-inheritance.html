@@ -1,0 +1,329 @@
+---
+title: "Native inheritance in JavaScript"
+description: "Warning! This aerobatics performed without safety net!"
+categories: [frontend, javascript, frameworkless]
+layout: post
+---
+<style>
+section { margin: 1.75em 0; }
+section h { font-size: 1.17em; font-weight: bold; }
+section h a { display: none; margin-left: 1em; border-bottom: 1px dashed; cursor: pointer; }
+section h:hover a { display: inline; }
+</style>
+
+<section>
+<p>Inheritance without a framework leads to panic attack even those who are experienced JS coders. Especially if it's needed to not just add more methods but also modify existing ones (dont ask why, it's ruthless OOP). But it is so simple (trollface).</p>
+</section>
+
+
+<section id="simple">
+<h>Simple class <a href="#simple">#</a></h>
+<pre><code class="javascript">
+function A () {}
+
+var a = new A()
+</code></pre>
+
+<p>Yeap, a class in JS is just a function.</p>
+</section>
+
+
+<section id="untitled">
+<h>Anonymous class <a href="#untitled">#</a></h>
+<pre><code class="javascript">
+var o = new function () {}
+</code></pre>
+
+<p>Any function could be a class even a anonymous lambda.</p>
+</section>
+
+
+<section id="method">
+<h>A class with a method <a href="#method">#</a></h>
+<pre><code class="javascript">
+function A () {}
+A.prototype =
+{
+	method: function () {}
+}
+
+var a = new A()
+a.method()
+</code></pre>
+
+<p>In strict OOP methods get added with prototypes. Yes <a href="http://www.google.com/search?q=javascript+prototype+inheritance">those guys prototypes</a>.</p>
+</section>
+
+
+<section id="static">
+<h>“Static” method <a href="#static">#</a></h>
+<pre><code class="javascript">
+function A () {}
+A.staticMethod = function () {}
+A.staticMethod()
+</code></pre>
+
+<p><code>staticMethod</code> is not available in instances.</p>
+</section>
+
+
+<section id="inheritance">
+<h>Inheritance in outer space <a href="#inheritance">#</a></h>
+<pre><code class="javascript">
+function A () {}
+
+
+function B () {}
+B.prototype = new A()
+</code></pre>
+
+<p>Yes, exactly <code>prototype = new A()</code>, not just <code>prototype = A()</code>.</p>
+</section>
+
+
+<section id="useful-inheritance">
+<h>Not a useless inheritance <a href="#useful-inheritance">#</a></h>
+<pre><code class="javascript">
+function A () {}
+A.prototype =
+{
+	methodA: function () {}
+}
+
+
+function B () {}
+B.prototype = new A()
+
+var b = new B()
+b.methodA()
+</code></pre>
+
+<p>Here we have in class <code>B</code> a useful <code>methodA()</code> from class <code>A</code>.</p>
+</section>
+
+
+<section id="add-method">
+<h>Adding a method <a href="#add-method">#</a></h>
+<pre><code class="javascript">
+function A () {}
+A.prototype =
+{
+	methodA: function () {}
+}
+
+
+function B () {}
+B.prototype = new A()
+B.prototype.methodB = function () {}
+
+var b = new B()
+b.methodA()
+b.methodB()
+</code></pre>
+
+<p>Now instances of class <code>B</code> has two handy methods one from <code>A</code> and one from <code>B</code>.</p>
+</section>
+
+
+<section id="bunch-of-methods">
+<h>Adding lots of methods <a href="#bunch-of-methods">#</a></h>
+<pre><code class="javascript">
+function A () {}
+
+
+function B () {}
+B.prototype = new A()
+
+var methodsB =
+{
+	methodB1: function () {},
+	methodB2: function () {},
+	methodB3: function () {}
+}
+
+Object.extend(B.prototype, methodsB)
+
+var b = new B()
+b.methodB1()
+b.methodB2()
+b.methodB3()
+</code></pre>
+
+<p><code><a href="http://www.google.com/search?q=Object.extend+JavaScript">Object.extend</a>(dst, src)</code> just copies properties from <code>src</code> to <code>dst</code>. If you doctor allows you may replace <code>Object.extend()</code> with <code>for in</code> loop ;)</p>
+</section>
+
+
+<section id="replace-method">
+<h>Replacing a mwthod <a href="#replace-method">#</a></h>
+<pre><code class="javascript">
+function A () {}
+A.prototype =
+{
+	methodA: function () {}
+}
+
+
+function B () {}
+B.prototype = new A()
+B.prototype.methodA = function () { alert(42) }
+
+var b = new B()
+b.methodA()
+</code></pre>
+
+<p>Alert window shows here.</p>
+</section>
+
+
+<section id="constructor">
+<h>Constructive inheritance <a href="#constructor">#</a></h>
+<pre><code class="javascript">
+function A ()
+{
+	this.array = []
+}
+
+
+function B ()
+{
+	A.apply(this)
+}
+B.prototype = new A()
+
+var b1 = new B()
+var b2 = new B()
+console.log(b1.array == b2.array)
+//>>> false
+</code></pre>
+
+<p>If <code>A.apply(this)</code> would not get called, then all instances of <code>B</code> share the same <code>array</code>.</p>
+</section>
+
+
+<section id="simple-supermethod">
+<h>Simple super method <a href="#simple-supermethod">#</a></h>
+<pre><code class="javascript">
+function A () {}
+A.prototype =
+{
+	methodA: function () {}
+}
+
+
+function B () {}
+B.prototype = new A()
+
+B.prototype.superMethodA = B.prototype.methodA
+B.prototype.methodA = function ()
+{
+	this.superMethodA()
+}
+
+var b = new B()
+b.methodA()
+</code></pre>
+
+<p>Perfectly fine for simple cases.</p>
+</section>
+
+
+<section id="complex-supermethod">
+<h>More sophisticated super method <a href="#complex-supermethod">#</a></h>
+<pre><code class="javascript">
+function A () {}
+A.prototype =
+{
+	methodA: function () {}
+}
+
+
+function B () {}
+B.prototype = new A()
+
+B.prototype.methodA = function ()
+{
+	A.prototype.methodA.apply(this)
+}
+
+
+function C () {}
+C.prototype = new B()
+
+C.prototype.methodA = function ()
+{
+	B.prototype.methodA.apply(this)
+}
+
+var c = new C()
+c.methodA()
+</code></pre>
+
+<p>Just always works.</p>
+</section>
+
+
+<section id="faster-supermethod">
+<h>Faster supermethod <a href="#faster-supermethod">#</a></h>
+<pre><code class="javascript">
+function A () {}
+A.prototype =
+{
+	methodA: function () {}
+}
+
+
+function B () {}
+B.prototype = new A()
+
+var superMethodA = A.prototype.methodA
+B.prototype.methodA = function ()
+{
+	superMethodA.apply(this)
+}
+
+var b = new B()
+b.methodA()
+</code></pre>
+
+<p>Performs better, but breaks if <code>A.prototype</code> gets changed.</p>
+</section>
+
+
+<section id="supermethod-example">
+<h>Useful super method <a href="#supermethod-example">#</a></h>
+<pre><code class="javascript">
+function A () {}
+A.prototype =
+{
+	setPosition: function (x)
+	{
+		this.x = x
+	}
+}
+
+
+function B () {}
+B.prototype = new A()
+
+B.prototype.setPosition = function (x, y)
+{
+	A.prototype.setPosition.call(this, x)
+	this.y = y
+}
+
+
+function C () {}
+C.prototype = new B()
+
+C.prototype.setPosition = function (x, y, z)
+{
+	B.prototype.setPosition.call(this, x, y)
+	this.z = z
+}
+
+var c = new C()
+c.setPosition(1, 2, 3)
+</code></pre>
+
+<p>In result of a hidden sequential call of <code>A#setPosition()</code> and <code>B#setPosition()</code> inside <code>C#setPosition()</code>, we get and object with data <code>{x: 1, y: 2, z: 3}</code>.</p>
+</section>
