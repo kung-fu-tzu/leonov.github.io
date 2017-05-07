@@ -61,3 +61,7 @@ code { font-family: 'Lucida Console', 'courier new', monospace; line-height: 1em
 .post .tags .tag:last-child:after { content: '.'; }
 
 .post .comments { margin: 1em 0; }
+
+pre code {
+  border-radius: 15px;
+}
