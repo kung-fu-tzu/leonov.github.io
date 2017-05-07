@@ -51,7 +51,7 @@ lang: en
     $.param()
 
 
-## 2015: 
+## 2015: FaceBabel Reacts to Elm!
 
     // let
     const encodePairs = map(map(encodeURIComponent))
@@ -61,6 +61,6 @@ lang: en
     export const stringify = compose(packFragments, packPairs, encodePairs, toPairs)
 
 
-## 2020: Haskell on WebAssembly?
+## 2020: Elm? WebAssembly?
 
 Tell us, future me!
