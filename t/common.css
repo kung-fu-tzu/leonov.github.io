@@ -63,5 +63,7 @@ code { font-family: 'Lucida Console', 'courier new', monospace; line-height: 1em
 .post .comments { margin: 1em 0; }
 
 pre code {
+  font: 1em / 1.3em 'Monaco', 'Lucida Console', 'courier new', monospace;
+  color: #f8f8f8;
   border-radius: 15px;
 }
