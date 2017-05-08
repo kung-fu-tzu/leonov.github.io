@@ -1,5 +1,5 @@
 ---
-title: "So different JavaScript"
+title: "Docker based A/B testing and demo servers"
 description: "A/B testing with Blue-Green Deployment"
 categories: [backend, docker, git]
 layout: post
