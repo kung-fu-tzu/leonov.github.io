@@ -34,7 +34,7 @@ As of version 3 the `docker-compose.yaml` in addition to a ready to run App Dock
 
 ## The actual code
 
-Here is a sample project which you could clone and run yourself. All the steps you need to take to get it running are described in the README. In real world case you also would need to tune your DNS server to point to the docker machine / swarm IP using wild-card `A` record.
+Here is [a sample project](https://github.com/peter-leonov/director) which you could clone and run yourself. All the steps you need to take to get it running are described in the README. In real world case you also would need to tune your DNS server to point to the docker machine / swarm IP using wild-card `A` record.
 
 
 ## Benefits
