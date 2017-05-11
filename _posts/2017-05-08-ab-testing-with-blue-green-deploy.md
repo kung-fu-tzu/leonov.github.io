@@ -6,6 +6,8 @@ layout: post
 lang: en
 ---
 
+TL;DR: A sample project ready to get deployed (with descriptive REAMDE): [github.com/peter-leonov/director](https://github.com/peter-leonov/director)
+
 A/B testing without proper tooling can lead to a mess in code and in mind like source control without Git would do. If your Docker infrastructure is mature enough to be called truly dockerized then you are already prepared. With Docker Compose it is really easy to deploy your application using Blue-Green Deployment which could be used also for split testing, performance QA, beta releases and what not. In this post I would like to share the minimalistic setup I've been using since early 2015 once fall in love with Docker.
 
 
