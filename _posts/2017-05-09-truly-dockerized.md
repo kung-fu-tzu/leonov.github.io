@@ -1,6 +1,6 @@
 ---
 title: "A truely dockerized app"
-description: "What it is and how to verify mine?"
+description: "What it is and how to verify yours?"
 categories: [backend, docker, git]
 layout: post
 lang: en
