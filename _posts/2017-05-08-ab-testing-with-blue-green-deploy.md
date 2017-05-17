@@ -15,7 +15,7 @@ A/B testing without proper tooling can lead to a mess in code and in mind like s
 
 The App should meet a few requirements:
 
-1. Be truly dockerized
+1. Be [truly dockerized](/posts/2017-05-09-truly-dockerized.html)
 2. Has a [Single Entry Point](https://www.nginx.com/blog/12-reasons-why-nginx-is-the-standard-for-containerized-applications-and-deploying-microservices/)
 3. Meet the [Config Factor](https://12factor.net/config) of [The Twelve-Factor App](https://12factor.net).
 
