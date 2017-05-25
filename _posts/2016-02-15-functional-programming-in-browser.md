@@ -7,4 +7,4 @@ lang: en
 ---
 
 
-Wanna a real hardcore from a Russian hacker on Functional programming? Here you have it: [FP in Browser, 2nd Edition](/pages/functional-programming-in-a-browser/). This was my first semi-professional Ru-En translation. Enjoy!
+Wanna a real hardcore from a Russian hacker on Functional programming? Here you have it in English: [FP in Browser, 2nd Edition](/pages/functional-programming-in-a-browser/). This was my first semi-professional Ru→En translation. Enjoy!
