@@ -6,7 +6,6 @@ layout: post
 lang: en
 ---
 
-
 15 years together and still married… and still fighting 😂
 
 ## 2000: Good old C-like style
@@ -27,7 +26,6 @@ lang: en
       return str;
     }
 
-
 ## 2005: prototype.js and Ext.js are hot
 
     UrlEncode.stringify = function (data) {
@@ -35,21 +33,19 @@ lang: en
         encode = window.encodeURIComponent,
         pairs = [],
         v, k;
-      
+
       for (k in data) {
         v = data[k];
         k = encode(k);
         pairs.push(k + '=' + encode(v));
       }
-      
+
       return pairs.join('&');
     }
-
 
 ## 2010: JavaWhat? jQuery!
 
     $.param()
-
 
 ## 2015: FaceBabel Reacts to Elm!
 
@@ -59,7 +55,6 @@ lang: en
     const packFragments = join('&')
     // in
     export const stringify = compose(packFragments, packPairs, encodePairs, toPairs)
-
 
 ## 2020: Elm? WebAssembly?
 
