@@ -59,3 +59,7 @@ lang: en
 ## 2020: Elm? WebAssembly?
 
 Tell us, future me!
+
+**UPDATE 2024**: [finally](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams)
+
+    new URLSearchParams(params).toString()
