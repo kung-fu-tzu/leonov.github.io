@@ -47,7 +47,7 @@ lang: en
 
     $.param()
 
-## 2015: FaceBabel Reacts to Elm!
+## 2015: Babel Reacts to Elm Flow
 
     // let
     const encodePairs = map(map(encodeURIComponent))
