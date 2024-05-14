@@ -12,16 +12,15 @@ lang: en
 
     function url_encode (data) {
       var str = "";
-      var flag = false;
+      var first = true;
       for (var k in data) {
+        if (!first) {
+          str = str + "&";
+        }
         str = str + escape(k);
         str = str + "=";
         str = str + escape(data[k]);
-        str = str + "&";
-        flag = true;
-      }
-      if (flag) {
-        str = str.substr(0, str.length-1);
+        first = false;
       }
       return str;
     }
