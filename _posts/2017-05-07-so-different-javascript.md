@@ -36,7 +36,8 @@ lang: en
       for (k in data) {
         v = data[k];
         k = encode(k);
-        pairs.push(k + '=' + encode(v));
+        v = encode(v);
+        pairs.push(k + '=' + v);
       }
 
       return pairs.join('&');
